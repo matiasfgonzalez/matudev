@@ -139,6 +139,59 @@ export function HeroSection() {
                 sizes="(max-width: 640px) 288px, (max-width: 1024px) 384px, 480px"
               />
             </div>
+
+            {/* Floating technology badges */}
+            {[
+              { name: "GeoServer", icon: "🌐", top: "-8%", left: "15%", delay: 0, duration: 6 },
+              { name: "Postgres", icon: "🐘", top: "2%", right: "-5%", delay: 0.5, duration: 7 },
+              { name: "OpenLayers", icon: "🗺️", top: "35%", left: "-18%", delay: 1, duration: 5.5 },
+              { name: "React", icon: "⚛️", top: "45%", right: "-12%", delay: 1.5, duration: 6.5 },
+              { name: "Node.js", icon: "🟢", bottom: "18%", left: "-8%", delay: 0.8, duration: 7.5 },
+              { name: "Next.js", icon: "▲", bottom: "5%", right: "5%", delay: 1.2, duration: 5.8 },
+              { name: "Docker", icon: "🐳", bottom: "-5%", left: "25%", delay: 0.3, duration: 6.8 },
+            ].map((tech) => (
+              <motion.div
+                key={tech.name}
+                className="absolute z-20 flex items-center gap-2 px-3.5 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap select-none pointer-events-none"
+                style={{
+                  top: tech.top,
+                  left: tech.left,
+                  right: tech.right,
+                  bottom: tech.bottom,
+                  background: "rgba(15, 20, 35, 0.85)",
+                  border: "1px solid rgba(100, 180, 255, 0.15)",
+                  backdropFilter: "blur(12px)",
+                  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.05)",
+                  color: "rgba(220, 235, 255, 0.95)",
+                }}
+                initial={{ opacity: 0, scale: 0.6 }}
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  y: [0, -8, 0, 6, 0],
+                  x: [0, 4, 0, -4, 0],
+                }}
+                transition={{
+                  opacity: { duration: 0.6, delay: 0.8 + tech.delay },
+                  scale: { duration: 0.6, delay: 0.8 + tech.delay },
+                  y: {
+                    duration: tech.duration,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: tech.delay,
+                  },
+                  x: {
+                    duration: tech.duration * 1.3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: tech.delay + 0.5,
+                  },
+                }}
+              >
+                <span className="text-sm sm:text-base">{tech.icon}</span>
+                {tech.name}
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
