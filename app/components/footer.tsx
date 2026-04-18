@@ -1,21 +1,33 @@
-"use client";
+'use client';
 
-import { Heart } from "lucide-react";
-import { GitHubIcon, LinkedInIcon, InstagramIcon } from "./github-icon";
+import { Heart } from 'lucide-react';
+import { GitHubIcon, LinkedInIcon, InstagramIcon } from './github-icon';
 
 const footerLinks = [
-  { label: "Inicio", href: "#hero" },
-  { label: "Sobre mí", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Proyectos", href: "#projects" },
-  { label: "Servicios", href: "#services" },
-  { label: "Contacto", href: "#contact" },
+  { label: 'Inicio', href: '#hero' },
+  { label: 'Sobre mí', href: '#about' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Proyectos', href: '#projects' },
+  { label: 'Servicios', href: '#services' },
+  { label: 'Contacto', href: '#contact' },
 ];
 
 const socialLinks = [
-  { icon: GitHubIcon, href: "https://github.com/matudev", label: "GitHub" },
-  { icon: LinkedInIcon, href: "https://linkedin.com/in/matudev", label: "LinkedIn" },
-  { icon: InstagramIcon, href: "https://instagram.com/matudev", label: "Instagram" },
+  {
+    icon: GitHubIcon,
+    href: 'https://github.com/matiasfgonzalez',
+    label: 'GitHub',
+  },
+  {
+    icon: LinkedInIcon,
+    href: 'https://www.linkedin.com/in/matias-gonzalez-1a75b6223/',
+    label: 'LinkedIn',
+  },
+  {
+    icon: InstagramIcon,
+    href: 'https://instagram.com/matute_2gonzalez',
+    label: 'Instagram',
+  },
 ];
 
 export function Footer() {
@@ -34,7 +46,7 @@ export function Footer() {
               </span>
             </a>
             <p className="text-sm opacity-50 max-w-xs leading-relaxed">
-              Desarrollador Full Stack apasionado por crear experiencias 
+              Desarrollador Full Stack apasionado por crear experiencias
               digitales que impactan y transforman negocios.
             </p>
           </div>
@@ -81,7 +93,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-[var(--glass-border)] flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs opacity-40 flex items-center gap-1">
-            © {new Date().getFullYear()} MatuDev. Hecho con{" "}
+            © {new Date().getFullYear()} MatuDev. Hecho con{' '}
             <Heart size={12} className="text-neon-pink fill-neon-pink" /> en
             Argentina.
           </p>

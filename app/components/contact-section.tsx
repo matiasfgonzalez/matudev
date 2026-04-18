@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import { Send, Mail, MapPin } from 'lucide-react';
+import { Mail, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
 import {
   ScrollReveal,
@@ -20,38 +19,26 @@ const socialLinks = [
     icon: GitHubIcon,
     label: 'GitHub',
     href: 'https://github.com/matiasfgonzalez',
-    color: 'hover:text-white',
+    color: 'hover:text-white dark:hover:text-white',
+    bgColor: 'hover:bg-white/10',
   },
   {
     icon: LinkedInIcon,
     label: 'LinkedIn',
     href: 'https://www.linkedin.com/in/matias-gonzalez-1a75b6223/',
     color: 'hover:text-neon-blue',
+    bgColor: 'hover:bg-neon-blue/10',
   },
   {
     icon: InstagramIcon,
     label: 'Instagram',
     href: 'https://instagram.com/matute_2gonzalez',
     color: 'hover:text-neon-pink',
+    bgColor: 'hover:bg-neon-pink/10',
   },
 ];
 
 export function ContactSection() {
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Placeholder — replace with real form logic
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setFormState({ name: '', email: '', message: '' });
-  };
-
   return (
     <section id="contact" className="relative py-24 sm:py-32">
       <div className="absolute inset-0 pointer-events-none">
@@ -126,137 +113,77 @@ export function ContactSection() {
           </motion.a>
         </ScrollReveal>
 
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
-          {/* Form */}
-          <ScrollReveal direction="left" className="lg:col-span-3">
-            <form
-              onSubmit={handleSubmit}
-              className="glass-card p-6 sm:p-8 space-y-5"
-            >
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label className="block text-sm font-medium mb-2 opacity-70">
-                    Nombre
-                  </label>
-                  <input
-                    type="text"
-                    value={formState.name}
-                    onChange={(e) =>
-                      setFormState({ ...formState, name: e.target.value })
-                    }
-                    required
-                    placeholder="Tu nombre"
-                    className="w-full px-4 py-3 rounded-xl bg-[var(--surface-2)] border border-[var(--glass-border)] text-[var(--foreground)] placeholder:opacity-40 focus:outline-none focus:border-neon-blue focus:ring-1 focus:ring-neon-blue/30 transition-all duration-300 text-sm"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2 opacity-70">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    value={formState.email}
-                    onChange={(e) =>
-                      setFormState({ ...formState, email: e.target.value })
-                    }
-                    required
-                    placeholder="tu@email.com"
-                    className="w-full px-4 py-3 rounded-xl bg-[var(--surface-2)] border border-[var(--glass-border)] text-[var(--foreground)] placeholder:opacity-40 focus:outline-none focus:border-neon-blue focus:ring-1 focus:ring-neon-blue/30 transition-all duration-300 text-sm"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-2 opacity-70">
-                  Mensaje
-                </label>
-                <textarea
-                  value={formState.message}
-                  onChange={(e) =>
-                    setFormState({ ...formState, message: e.target.value })
-                  }
-                  required
-                  rows={5}
-                  placeholder="Contame sobre tu proyecto..."
-                  className="w-full px-4 py-3 rounded-xl bg-[var(--surface-2)] border border-[var(--glass-border)] text-[var(--foreground)] placeholder:opacity-40 focus:outline-none focus:border-neon-blue focus:ring-1 focus:ring-neon-blue/30 transition-all duration-300 text-sm resize-none"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="glow-button w-full sm:w-auto px-8 py-3.5 text-sm font-semibold flex items-center justify-center gap-2"
+        {/* Contact Info Grid */}
+        <div className="max-w-4xl mx-auto">
+          <StaggerContainer className="grid md:grid-cols-2 gap-6 mb-12">
+            {/* Email Card */}
+            <StaggerItem>
+              <motion.a
+                href="mailto:matiasgonzalez.652@gmail.com"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="group block h-full"
               >
-                {submitted ? (
-                  <>✓ ¡Mensaje enviado!</>
-                ) : (
-                  <>
-                    <Send size={16} />
-                    Enviar Mensaje
-                  </>
-                )}
-              </button>
-            </form>
-          </ScrollReveal>
-
-          {/* Info */}
-          <ScrollReveal direction="right" className="lg:col-span-2">
-            <div className="space-y-6">
-              {/* Contact info cards */}
-              <StaggerContainer className="space-y-4">
-                <StaggerItem>
-                  <div className="glass-card p-5 flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-neon-blue/10 flex items-center justify-center shrink-0">
-                      <Mail size={20} className="text-neon-blue" />
-                    </div>
-                    <div>
-                      <div className="text-xs opacity-50 font-medium">
-                        Email
-                      </div>
-                      <div className="text-sm font-semibold">
-                        matiasgonzalez.652@gmail.com
-                      </div>
-                    </div>
+                <div className="glass-card p-6 sm:p-8 h-full flex flex-col items-center text-center hover:border-neon-blue/30 border-2 border-transparent transition-all duration-300 hover:shadow-xl hover:shadow-neon-blue/10">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-neon-blue/20 to-neon-blue/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <Mail size={32} className="text-neon-blue" />
                   </div>
-                </StaggerItem>
-
-                <StaggerItem>
-                  <div className="glass-card p-5 flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-neon-violet/10 flex items-center justify-center shrink-0">
-                      <MapPin size={20} className="text-neon-violet" />
-                    </div>
-                    <div>
-                      <div className="text-xs opacity-50 font-medium">
-                        Ubicación
-                      </div>
-                      <div className="text-sm font-semibold">
-                        Paraná - Entre Ríos, Argentina 🇦🇷
-                      </div>
-                    </div>
-                  </div>
-                </StaggerItem>
-              </StaggerContainer>
-
-              {/* Social */}
-              <div className="glass-card p-5">
-                <div className="text-xs opacity-50 font-medium mb-4 uppercase tracking-wider">
-                  Seguime en redes
+                  <h3 className="text-sm font-medium opacity-60 mb-2 uppercase tracking-wider">
+                    Email
+                  </h3>
+                  <p className="text-lg font-semibold text-[var(--foreground)] group-hover:text-neon-blue transition-colors duration-300">
+                    matiasgonzalez.652@gmail.com
+                  </p>
                 </div>
-                <div className="flex gap-3">
-                  {socialLinks.map((link) => (
-                    <motion.a
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`w-12 h-12 rounded-xl flex items-center justify-center bg-[var(--surface-2)] border border-[var(--glass-border)] opacity-60 ${link.color} hover:opacity-100 hover:border-[var(--border-glow)] transition-all duration-300`}
-                      aria-label={link.label}
-                    >
-                      <link.icon size={20} />
-                    </motion.a>
-                  ))}
+              </motion.a>
+            </StaggerItem>
+
+            {/* Location Card */}
+            <StaggerItem>
+              <div className="glass-card p-6 sm:p-8 h-full flex flex-col items-center text-center border-2 border-transparent">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-neon-violet/20 to-neon-violet/5 flex items-center justify-center mb-4">
+                  <MapPin size={32} className="text-neon-violet" />
                 </div>
+                <h3 className="text-sm font-medium opacity-60 mb-2 uppercase tracking-wider">
+                  Ubicación
+                </h3>
+                <p className="text-lg font-semibold text-[var(--foreground)]">
+                  Paraná - Entre Ríos, Argentina 🇦🇷
+                </p>
+              </div>
+            </StaggerItem>
+          </StaggerContainer>
+
+          {/* Social Links */}
+          <ScrollReveal delay={0.4}>
+            <div className="text-center">
+              <h3 className="text-sm font-medium opacity-60 mb-6 uppercase tracking-wider">
+                Seguime en redes
+              </h3>
+              <div className="flex justify-center gap-4">
+                {socialLinks.map((link, index) => (
+                  <motion.a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ scale: 1.1, y: -4 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`group relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center bg-[var(--surface-2)] border-2 border-[var(--glass-border)] ${link.color} ${link.bgColor} hover:border-[var(--border-glow)] transition-all duration-300 overflow-hidden`}
+                    aria-label={link.label}
+                  >
+                    {/* Glow effect */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-current/5 to-transparent transition-opacity duration-300" />
+                    <link.icon size={28} className="relative z-10" />
+                    {/* Tooltip */}
+                    <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                      {link.label}
+                    </span>
+                  </motion.a>
+                ))}
               </div>
             </div>
           </ScrollReveal>
