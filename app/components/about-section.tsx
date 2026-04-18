@@ -28,16 +28,18 @@ export function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image */}
           <ScrollReveal direction="left">
-            <div className="relative mx-auto w-72 h-72 sm:w-80 sm:h-80 lg:w-full lg:h-[420px]">
+            <div className="relative mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-none">
               <div className="absolute inset-4 bg-gradient-to-br from-neon-blue/10 to-neon-violet/10 rounded-3xl blur-[60px]" />
-              <div className="glass-card relative w-full h-full overflow-hidden rounded-3xl p-1">
-                <div className="relative w-full h-full rounded-[14px] overflow-hidden">
+              <div className="glass-card relative w-full overflow-hidden rounded-3xl p-1">
+                <div className="relative w-full rounded-[14px] overflow-hidden">
                   <Image
                     src="/images/about-portrait.png"
                     alt="MatuDev - Matías Francisco González"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 320px, 50vw"
+                    width={1024}
+                    height={1024}
+                    className="w-full h-auto object-contain"
+                    sizes="(max-width: 640px) 288px, (max-width: 1024px) 384px, 50vw"
+                    loading="eager"
                   />
                 </div>
               </div>
