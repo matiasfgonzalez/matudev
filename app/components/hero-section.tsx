@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { ArrowDown, Sparkles } from "lucide-react";
-import Image from "next/image";
+import { motion } from 'framer-motion';
+import { ArrowDown, Sparkles } from 'lucide-react';
+import Image from 'next/image';
 
 export function HeroSection() {
   return (
@@ -14,7 +14,7 @@ export function HeroSection() {
       <div className="absolute inset-0 z-0">
         <div
           className="absolute inset-0"
-          style={{ background: "var(--gradient-hero)" }}
+          style={{ background: 'var(--gradient-hero)' }}
         />
         {/* Orbiting ring */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-[0.03]">
@@ -23,14 +23,14 @@ export function HeroSection() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-[0.04]">
           <div
             className="w-full h-full rounded-full border border-[var(--neon-violet)] animate-spin-slow"
-            style={{ animationDirection: "reverse", animationDuration: "15s" }}
+            style={{ animationDirection: 'reverse', animationDuration: '15s' }}
           />
         </div>
         {/* Glow orbs */}
         <div className="absolute top-[20%] left-[10%] w-72 h-72 bg-neon-blue/10 rounded-full blur-[120px] animate-pulse-glow" />
         <div
           className="absolute bottom-[20%] right-[10%] w-80 h-80 bg-neon-violet/10 rounded-full blur-[120px] animate-pulse-glow"
-          style={{ animationDelay: "1.5s" }}
+          style={{ animationDelay: '1.5s' }}
         />
       </div>
 
@@ -58,8 +58,7 @@ export function HeroSection() {
             }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05]"
           >
-            Hola, soy{" "}
-            <span className="neon-text">MatuDev</span>
+            Hola, soy <span className="neon-text">MatuDev</span>
           </motion.h1>
 
           <motion.p
@@ -85,8 +84,8 @@ export function HeroSection() {
             }}
             className="mt-6 text-base sm:text-lg opacity-60 max-w-lg mx-auto lg:mx-0 leading-relaxed"
           >
-            Transformo ideas en experiencias digitales que impactan. 
-            Especializado en crear aplicaciones web modernas, rápidas y 
+            Transformo ideas en experiencias digitales que impactan.
+            Especializado en crear aplicaciones web modernas, rápidas y
             escalables con las tecnologías más innovadoras del mercado.
           </motion.p>
 
@@ -142,27 +141,77 @@ export function HeroSection() {
 
             {/* Floating technology badges */}
             {[
-              { name: "GeoServer", icon: "🌐", top: "-8%", left: "15%", delay: 0, duration: 6 },
-              { name: "Postgres", icon: "🐘", top: "2%", right: "-5%", delay: 0.5, duration: 7 },
-              { name: "OpenLayers", icon: "🗺️", top: "35%", left: "-18%", delay: 1, duration: 5.5 },
-              { name: "React", icon: "⚛️", top: "45%", right: "-12%", delay: 1.5, duration: 6.5 },
-              { name: "Node.js", icon: "🟢", bottom: "18%", left: "-8%", delay: 0.8, duration: 7.5 },
-              { name: "Next.js", icon: "▲", bottom: "5%", right: "5%", delay: 1.2, duration: 5.8 },
-              { name: "Docker", icon: "🐳", bottom: "-5%", left: "25%", delay: 0.3, duration: 6.8 },
+              {
+                name: 'GeoServer',
+                icon: '🌐',
+                top: '-8%',
+                left: '15%',
+                delay: 0,
+                duration: 6,
+              },
+              {
+                name: 'Postgres',
+                icon: '🐘',
+                top: '2%',
+                right: '-5%',
+                delay: 0.5,
+                duration: 7,
+              },
+              {
+                name: 'OpenLayers',
+                icon: '🗺️',
+                top: '35%',
+                left: '-18%',
+                delay: 1,
+                duration: 5.5,
+              },
+              {
+                name: 'React',
+                icon: '⚛️',
+                top: '45%',
+                right: '-12%',
+                delay: 1.5,
+                duration: 6.5,
+              },
+              {
+                name: 'Node.js',
+                icon: '🟢',
+                bottom: '18%',
+                left: '-8%',
+                delay: 0.8,
+                duration: 7.5,
+              },
+              {
+                name: 'Next.js',
+                icon: '▲',
+                bottom: '5%',
+                right: '5%',
+                delay: 1.2,
+                duration: 5.8,
+              },
+              {
+                name: 'Docker',
+                icon: '🐳',
+                bottom: '-5%',
+                left: '25%',
+                delay: 0.3,
+                duration: 6.8,
+              },
             ].map((tech) => (
               <motion.div
                 key={tech.name}
-                className="absolute z-20 flex items-center gap-2 px-3.5 py-2 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap select-none pointer-events-none"
+                className="absolute z-20 flex items-center gap-1 sm:gap-1.5 md:gap-2 px-2 py-1 sm:px-2.5 sm:py-1.5 md:px-3.5 md:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-medium whitespace-nowrap select-none pointer-events-none"
                 style={{
                   top: tech.top,
                   left: tech.left,
                   right: tech.right,
                   bottom: tech.bottom,
-                  background: "rgba(15, 20, 35, 0.85)",
-                  border: "1px solid rgba(100, 180, 255, 0.15)",
-                  backdropFilter: "blur(12px)",
-                  boxShadow: "0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.05)",
-                  color: "rgba(220, 235, 255, 0.95)",
+                  background: 'rgba(15, 20, 35, 0.85)',
+                  border: '1px solid rgba(100, 180, 255, 0.15)',
+                  backdropFilter: 'blur(12px)',
+                  boxShadow:
+                    '0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.05)',
+                  color: 'rgba(220, 235, 255, 0.95)',
                 }}
                 initial={{ opacity: 0, scale: 0.6 }}
                 animate={{
@@ -177,18 +226,20 @@ export function HeroSection() {
                   y: {
                     duration: tech.duration,
                     repeat: Infinity,
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                     delay: tech.delay,
                   },
                   x: {
                     duration: tech.duration * 1.3,
                     repeat: Infinity,
-                    ease: "easeInOut",
+                    ease: 'easeInOut',
                     delay: tech.delay + 0.5,
                   },
                 }}
               >
-                <span className="text-sm sm:text-base">{tech.icon}</span>
+                <span className="text-xs sm:text-sm md:text-base">
+                  {tech.icon}
+                </span>
                 {tech.name}
               </motion.div>
             ))}
@@ -209,7 +260,7 @@ export function HeroSection() {
         </span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
         >
           <ArrowDown size={18} />
         </motion.div>
