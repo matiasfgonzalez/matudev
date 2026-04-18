@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Moon, Sun } from "lucide-react";
-import { useTheme } from "./theme-provider";
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, Moon, Sun } from 'lucide-react';
+import { useTheme } from './theme-provider';
 
 const navLinks = [
-  { label: "Inicio", href: "#hero" },
-  { label: "Sobre mí", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Proyectos", href: "#projects" },
-  { label: "Servicios", href: "#services" },
-  { label: "Contacto", href: "#contact" },
+  { label: 'Inicio', href: '#hero' },
+  { label: 'Sobre mí', href: '#about' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Proyectos', href: '#projects' },
+  { label: 'Servicios', href: '#services' },
+  { label: 'Contacto', href: '#contact' },
 ];
 
 export function Navbar() {
@@ -21,8 +21,8 @@ export function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
@@ -32,18 +32,21 @@ export function Navbar() {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "py-3 bg-[var(--glass-bg)] backdrop-blur-xl border-b border-[var(--glass-border)]"
-          : "py-5 bg-transparent"
+          ? 'py-3 bg-[var(--glass-bg)] backdrop-blur-xl border-b border-[var(--glass-border)]'
+          : 'py-5 bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 flex items-center justify-between">
         {/* Logo */}
-        <a href="#hero" className="flex items-center gap-2 group">
-          <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-neon-blue to-neon-violet flex items-center justify-center font-bold text-white text-sm shadow-[var(--shadow-neon-blue)] group-hover:shadow-[var(--shadow-neon-violet)] transition-shadow duration-500">
+        <a
+          href="#hero"
+          className="flex items-center gap-1.5 sm:gap-2 group shrink-0"
+        >
+          <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-gradient-to-br from-neon-blue to-neon-violet flex items-center justify-center font-bold text-white text-sm shadow-[var(--shadow-neon-blue)] group-hover:shadow-[var(--shadow-neon-violet)] transition-shadow duration-500">
             M
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-neon-blue to-neon-violet opacity-0 group-hover:opacity-60 blur-lg transition-opacity duration-500" />
+            <div className="absolute inset-0 rounded-lg sm:rounded-xl bg-gradient-to-br from-neon-blue to-neon-violet opacity-0 group-hover:opacity-60 blur-lg transition-opacity duration-500" />
           </div>
-          <span className="font-bold text-lg tracking-tight">
+          <span className="font-bold text-base sm:text-lg tracking-tight">
             Matu<span className="neon-text">Dev</span>
           </span>
         </a>
@@ -64,14 +67,14 @@ export function Navbar() {
         </ul>
 
         {/* Actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <button
             onClick={toggleTheme}
-            className="relative w-10 h-10 rounded-xl flex items-center justify-center border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md hover:border-[var(--border-glow)] transition-all duration-300"
+            className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md hover:border-[var(--border-glow)] transition-all duration-300 shrink-0"
             aria-label="Cambiar tema"
           >
             <AnimatePresence mode="wait">
-              {theme === "dark" ? (
+              {theme === 'dark' ? (
                 <motion.div
                   key="sun"
                   initial={{ rotate: -90, opacity: 0 }}
@@ -79,7 +82,7 @@ export function Navbar() {
                   exit={{ rotate: 90, opacity: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <Sun size={18} />
+                  <Sun size={16} className="sm:w-[18px] sm:h-[18px]" />
                 </motion.div>
               ) : (
                 <motion.div
@@ -89,7 +92,7 @@ export function Navbar() {
                   exit={{ rotate: -90, opacity: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <Moon size={18} />
+                  <Moon size={16} className="sm:w-[18px] sm:h-[18px]" />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -98,7 +101,7 @@ export function Navbar() {
           {/* CTA desktop */}
           <a
             href="#contact"
-            className="hidden md:inline-flex glow-button px-5 py-2.5 text-sm"
+            className="hidden md:inline-flex glow-button px-5 py-2.5 text-sm shrink-0"
           >
             Hablemos
           </a>
@@ -106,10 +109,14 @@ export function Navbar() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden flex items-center justify-center w-10 h-10 rounded-xl border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md"
+            className="md:hidden flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl border border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md shrink-0"
             aria-label="Menú"
           >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileOpen ? (
+              <X size={18} className="sm:w-5 sm:h-5" />
+            ) : (
+              <Menu size={18} className="sm:w-5 sm:h-5" />
+            )}
           </button>
         </div>
       </div>
@@ -119,7 +126,7 @@ export function Navbar() {
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
+            animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="md:hidden overflow-hidden bg-[var(--glass-bg)] backdrop-blur-xl border-b border-[var(--glass-border)]"
