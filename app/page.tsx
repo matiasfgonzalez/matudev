@@ -24,7 +24,7 @@ export default function Home() {
         <SkillsSection />
         <ProjectsSection />
         <ServicesSection />
-        <TestimonialsSection />
+        {/*<TestimonialsSection />*/}
         <CTASection />
         <ContactSection />
       </main>

@@ -7,30 +7,30 @@ import { ScrollReveal, StaggerContainer, StaggerItem } from "./scroll-animations
 
 const projects = [
   {
-    title: "NexCommerce",
+    title: "Club Cuotas",
     description:
-      "Plataforma de e-commerce headless con panel de administración, pagos con Stripe, inventario en tiempo real y analytics avanzados.",
+      "Sistema completo para gestionar cuotas, torneos y pagos de jugadores. Simplifica la administración y mantén todo organizado.",
     image: "/images/project-ecommerce.png",
-    tags: ["Next.js", "Prisma", "Stripe", "PostgreSQL"],
-    demo: "#",
+    tags: ["Next.js", "Prisma", "Vercel", "PostgreSQL"],
+    demo: "https://club-cuotas.vercel.app/",
     repo: "#",
   },
   {
-    title: "DataPulse Analytics",
+    title: "TurnosPro",
     description:
-      "Dashboard SaaS de analytics en tiempo real con visualizaciones interactivas, alertas inteligentes y reportes automatizados para equipos de producto.",
+      "Gestión de Turnos, Nivel Premium. Automatiza tus reservas, recobra tu tiempo libre y eleva la imagen de tu marca con una experiencia que tus clientes amarán.",
     image: "/images/project-saas.png",
-    tags: ["React", "Node.js", "WebSocket", "D3.js"],
-    demo: "#",
+    tags: ["Next.js", "Node.js", "Prisma", "Vercel", "PostgreSQL", "Resend"],
+    demo: "https://www.buscatusturnos.com.ar/",
     repo: "#",
   },
   {
-    title: "ConnectSphere",
+    title: "Federal Futbol Club",
     description:
-      "Red social privada para comunidades tech con chat en tiempo real, foros temáticos, sistema de reputación y matching de mentores.",
+      "Identidad digital y presencia profesional a un grupo de amigos apasionados por el fútbol, que necesitaban una plataforma para mostrar su historia, logros y próximos partidos.",
     image: "/images/project-social.png",
-    tags: ["Next.js", "Socket.io", "Redis", "Docker"],
-    demo: "#",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel", "Framer Motion", "Radix UI"],
+    demo: "https://federal-futbol-club-page.pages.dev/",
     repo: "#",
   },
 ];
@@ -67,22 +67,15 @@ export function ProjectsSection() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[var(--surface)] via-transparent to-transparent opacity-60" />
-
                   {/* Overlay buttons */}
                   <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-sm">
                     <a
                       href={project.demo}
+                      target="_blank"
                       className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium hover:bg-white/20 transition-colors"
                     >
                       <ExternalLink size={16} />
-                      Demo
-                    </a>
-                    <a
-                      href={project.repo}
-                      className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium hover:bg-white/20 transition-colors"
-                    >
-                      <GitHubIcon size={16} />
-                      Código
+                      Visitar
                     </a>
                   </div>
                 </div>

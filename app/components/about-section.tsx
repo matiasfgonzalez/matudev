@@ -6,9 +6,9 @@ import { ScrollReveal, StaggerContainer, StaggerItem } from "./scroll-animations
 
 const stats = [
   { icon: Code2, value: "+5", label: "Años experiencia", color: "text-neon-blue" },
-  { icon: Briefcase, value: "+40", label: "Proyectos", color: "text-neon-violet" },
-  { icon: Users, value: "+25", label: "Clientes", color: "text-neon-cyan" },
-  { icon: Coffee, value: "∞", label: "Cafés", color: "text-neon-orange" },
+  { icon: Briefcase, value: "+10", label: "Proyectos", color: "text-neon-violet" },
+  { icon: Users, value: "Sumando", label: "Clientes", color: "text-neon-cyan" },
+  { icon: Coffee, value: "∞", label: "Mates", color: "text-neon-orange" },
 ];
 
 export function AboutSection() {
@@ -53,7 +53,7 @@ export function AboutSection() {
                 Soy <strong className="text-[var(--foreground)] opacity-100">Matías Francisco González</strong>, 
                 un desarrollador Full Stack apasionado por crear soluciones digitales 
                 que marquen la diferencia. Desde que escribí mi primer "Hello World" 
-                en un viejo notebook a los 15, supe que el código sería mi lenguaje.
+                en un viejo notebook a los 19, supe que el código sería mi lenguaje.
               </p>
               <p className="text-base sm:text-lg leading-relaxed opacity-70">
                 Me especializo en el ecosistema <strong className="text-neon-cyan opacity-100">React/Next.js</strong> para 
@@ -64,7 +64,7 @@ export function AboutSection() {
               </p>
               <p className="text-base sm:text-lg leading-relaxed opacity-70">
                 Cuando no estoy programando, probablemente estoy explorando nuevas 
-                herramientas de IA, tomando café o pensando en cómo automatizar algo 
+                herramientas de IA, tomando mate o pensando en cómo automatizar algo 
                 que no debería ser automatizado. 🚀
               </p>
             </div>
