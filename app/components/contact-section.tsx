@@ -75,36 +75,39 @@ export function ContactSection() {
             href="https://wa.me/5493454432164?text=Hola%20Matías%2C%20me%20gustaría%20conversar%20sobre%20una%20posible%20colaboración.%20¿Tenés%20disponibilidad%3F"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.02, y: -2, zIndex: 20 }}
+            whileHover={{ scale: 1.02, y: -4, zIndex: 20 }}
             whileTap={{ scale: 0.98 }}
-            className="group block max-w-2xl mx-auto mb-16 overflow-hidden relative"
+            className="group block max-w-2xl mx-auto mb-16 relative"
           >
-            <div className="relative glass-card p-6 sm:p-8 border-2 border-transparent hover:border-[#25D366]/30 dark:hover:border-[#25D366]/30 hover:shadow-lg hover:shadow-[#25D366]/10 transition-all duration-500">
-              {/* Glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#25D366]/0 via-[#25D366]/5 to-[#25D366]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative glass-card p-6 sm:p-8 border-2 border-[var(--border)] hover:border-[#25D366]/50 dark:hover:border-[#25D366]/40 hover:shadow-2xl dark:hover:shadow-[#25D366]/20 hover:shadow-[#25D366]/30 transition-all duration-500 rounded-2xl overflow-hidden">
+              {/* Glow effect - más visible */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#25D366]/0 via-[#25D366]/10 to-[#25D366]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* Background extra para modo claro */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#25D366]/0 to-[#25D366]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div className="relative flex flex-col sm:flex-row items-center gap-6">
                 {/* Icon */}
                 <div className="relative shrink-0">
-                  <div className="absolute inset-0 bg-[#25D366]/20 blur-2xl group-hover:blur-3xl transition-all duration-500" />
-                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-[#25D366] to-[#128C7E] flex items-center justify-center shadow-lg shadow-[#25D366]/20 group-hover:shadow-[#25D366]/40 transition-all duration-500">
+                  <div className="absolute inset-0 bg-[#25D366]/30 blur-2xl group-hover:blur-3xl group-hover:scale-110 transition-all duration-500" />
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-[#25D366] to-[#128C7E] flex items-center justify-center shadow-lg shadow-[#25D366]/30 group-hover:shadow-2xl group-hover:shadow-[#25D366]/50 group-hover:scale-105 transition-all duration-500">
                     <WhatsAppIcon size={32} className="text-white" />
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="flex-1 text-center sm:text-left">
-                  <h3 className="text-xl sm:text-2xl font-bold mb-2 text-[var(--foreground)] dark:text-white">
+                  <h3 className="text-xl sm:text-2xl font-bold mb-2 text-[var(--foreground)] group-hover:text-[#25D366] dark:group-hover:text-[#25D366] transition-colors duration-300">
                     ¿Preferís WhatsApp?
                   </h3>
-                  <p className="text-sm sm:text-base text-[var(--foreground)] opacity-70 group-hover:opacity-90 transition-opacity duration-300">
+                  <p className="text-sm sm:text-base text-[var(--foreground)] opacity-70 group-hover:opacity-100 transition-all duration-300">
                     Hablemos directamente. Hacé clic para iniciar una
                     conversación ahora mismo.
                   </p>
                 </div>
 
                 {/* Arrow indicator */}
-                <div className="hidden sm:block text-[var(--foreground)] opacity-40 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 shrink-0">
+                <div className="hidden sm:block text-[var(--foreground)] group-hover:text-[#25D366] opacity-40 group-hover:opacity-100 group-hover:translate-x-2 transition-all duration-300 shrink-0">
                   <svg
                     width="24"
                     height="24"
