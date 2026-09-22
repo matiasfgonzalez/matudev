@@ -1,0 +1,444 @@
+{
+  "project": {
+    "name": "Bloom Stickers — Landing Page",
+    "slug": "bloom-stickers-landing",
+    "purpose": "Landing page promocional y comercial para un emprendimiento de stickers físicos y digitales. Convierte visitas en ventas y comunidad, muestra catálogo, inspira con producto, y facilita compra/encargo/contacto.",
+    "primary_goals": [
+      "Presentar identidad visual y catálogo de stickers",
+      "Incrementar conversiones (comprar / encargar / suscribirse)",
+      "Construir comunidad (newsletter, redes)",
+      "Mostrar calidad y variedad del producto con microinteracciones y animaciones pulidas"
+    ]
+  },
+  "brand_identity": {
+    "brand_name": "Bloom Stickers",
+    "brand_voice": "Juguetón, amable, creativo, profesional y moderno. Cercano pero con estética cuidada y premium dentro del universo 'kawaii / pastel'.",
+    "core_values": [
+      "Creatividad",
+      "Calidad",
+      "Personalización",
+      "Sostenibilidad (si aplica)"
+    ],
+    "logo_notes": "Logotipo tipo script/rounded con relleno rosa y contorno rosa oscuro sobre un corazón menta pastel; elementos decorativos tipo stickers alrededor (caritas, rayos, corazones).",
+    "color_palette": {
+      "extraction_method": "Inspección visual del logo adjunto; valores aproximados sugeridos para desarrollo",
+      "primary": {
+        "name": "Rose Pink",
+        "hex": "#E86D92",
+        "usage": "Texto principal destacado, logotipo, CTAs primarios"
+      },
+      "primary_dark": {
+        "name": "Deep Rose (outline)",
+        "hex": "#B23D66",
+        "usage": "Contornos, sombras de acento, botones en hover"
+      },
+      "secondary": {
+        "name": "Mint Heart",
+        "hex": "#C2EDE0",
+        "usage": "Fondos de secciones, tarjetas destacadas, highlights"
+      },
+      "accent_yellow": {
+        "name": "Smile Yellow",
+        "hex": "#FFD54F",
+        "usage": "Pequeños acentos, callouts, badges"
+      },
+      "accent_purple": {
+        "name": "Lilac",
+        "hex": "#D7B7FF",
+        "usage": "Decorative stickers, badges, subtle gradients"
+      },
+      "neutral_light": {
+        "name": "Cream",
+        "hex": "#FFF9F6",
+        "usage": "Background claro, surfaces"
+      },
+      "neutral_dark": {
+        "name": "Charcoal (dark mode bg)",
+        "hex": "#0F1113",
+        "usage": "Fondo principal dark, text light"
+      }
+    },
+    "typography": {
+      "display": {
+        "family": "Fredoka One, 'Poppins', 'Baloo 2' (fallback)",
+        "use": "Headings hero, logo-adjacent copy — personalidad redondeada y juguetona",
+        "weights": ["400", "700"]
+      },
+      "body": {
+        "family": "Inter, 'Poppins', system-ui",
+        "use": "Cuerpo de texto, legibilidad y neutralidad",
+        "weights": ["400", "600"]
+      },
+      "codepoint": "Usar kerning amplio en headings, mayor tracking en H1 para estilo 'sticker' friendly"
+    },
+    "tone_tags": ["playful", "premium", "pastel", "approachable"]
+  },
+  "audience": {
+    "primary": "Jóvenes (16–35) interesados en papelería, planners, bullet journals, coleccionismo y personalización de objetos.",
+    "secondary": "Pequeñas boutiques y tiendas físicas que compran por mayoreo, diseñadores y amantes del arte kawaii."
+  },
+  "ux_principles": [
+    "Foco en producto: imágenes grandes, mockups y lifestyle shots",
+    "Pocas distracciones en hero: CTA claro",
+    "Microinteracciones significativas (hover, drag, parallax) para transmitir tactilidad",
+    "Modo claro y oscuro con contraste a11y",
+    "Carga progresiva de assets (lazy load + low-res placeholders)"
+  ],
+  "seo_and_marketing": {
+    "title": "Bloom Stickers — Pegatinas creativas y personalizadas",
+    "meta_description": "Bloom Stickers: pegatinas premium, personales y coleccionables. Compra sets, diseña tu propio sticker y únete a nuestra comunidad. Envío rápido y calidad superior.",
+    "primary_keywords": [
+      "stickers",
+      "pegatinas",
+      "pegatinas kawaii",
+      "stickers personalizados",
+      "pegatinas para planners"
+    ],
+    "og_image_notes": "Hero artwork con logotipo sobre corazón menta y stickers alrededor, 1200x630",
+    "analytics": "Agrega Google Analytics / Plausible / pixel de redes según preferencia"
+  },
+  "technical_stack_recommendation": {
+    "framework": "Next.js 14+ (app router) o React 18+",
+    "styling": "Tailwind CSS + CSS variables para tokens de color; fallback CSS puro permitiendo override",
+    "animations": "GSAP (core) + ScrollTrigger plugin; consider SplittingText plugin o textavi for entrance effects",
+    "state_management": "local state minimal; no heavy global store required",
+    "images": "next/image (o alternativa) + AVIF/WebP delivery + LQIP placeholders",
+    "forms": "Formspree / Netlify Forms or API endpoint (Next.js API route)",
+    "accessibility": "Headless UI patterns for modals, keyboard navigation, aria labels",
+    "devops": "Vercel/Netlify deploy; CDN for assets"
+  },
+  "modes": {
+    "light": {
+      "bg": "neutral_light",
+      "surface": "#FFFFFF",
+      "text": "#121212",
+      "muted": "#6B6B6B"
+    },
+    "dark": {
+      "bg": "neutral_dark",
+      "surface": "#0B0D0F",
+      "text": "#F7F7F7",
+      "muted": "#A8A8A8"
+    },
+    "toggle": "Usar CSS media query `prefers-color-scheme` + toggle en UI que persista en localStorage"
+  },
+  "design_tokens": {
+    "css_variables": {
+      "--color-primary": "#E86D92",
+      "--color-primary-700": "#B23D66",
+      "--color-secondary": "#C2EDE0",
+      "--color-accent": "#FFD54F",
+      "--color-muted": "#6B6B6B",
+      "--radius-sm": "8px",
+      "--radius-md": "16px",
+      "--shadow-soft": "0 6px 20px rgba(178,61,102,0.12)"
+    },
+    "tailwind": {
+      "extend": {
+        "colors": {
+          "bloom-pink": "#E86D92",
+          "bloom-pink-dark": "#B23D66",
+          "bloom-mint": "#C2EDE0",
+          "bloom-yellow": "#FFD54F",
+          "bloom-lilac": "#D7B7FF"
+        },
+        "borderRadius": { "xl": "24px" }
+      }
+    }
+  },
+  "page_structure": [
+    {
+      "section": "hero",
+      "priority": "critical",
+      "content": {
+        "heading": "Haz que todo florezca con stickers únicos",
+        "subheading": "Sets pastel, diseños personalizados y envíos rápidos. Dale vida a tus cosas.",
+        "primary_cta": {
+          "text": "Comprar ahora",
+          "action": "/shop",
+          "variant": "solid"
+        },
+        "secondary_cta": { "text": "Ver colección", "action": "#catalog" },
+        "visual": "Illustration + product mockup carousel + sticker scatter (overlapping elements)",
+        "layout": "Two-column on desktop: left text, right product card stack; mobile stacked with hero image on top"
+      },
+      "animation_gsap": {
+        "entrance": [
+          {
+            "target": ".hero__title",
+            "from": { "y": 50, "opacity": 0 },
+            "duration": 0.9,
+            "ease": "power3.out",
+            "stagger": 0.08
+          },
+          {
+            "target": ".hero__cta",
+            "from": { "scale": 0.92, "opacity": 0 },
+            "duration": 0.6,
+            "ease": "back.out(1.2)"
+          },
+          {
+            "target": ".hero__stickers .sticker",
+            "from": { "y": 40, "opacity": 0, "rotation": -6 },
+            "duration": 1.1,
+            "stagger": 0.06
+          }
+        ],
+        "scroll_parallax": {
+          "target": ".hero__visual",
+          "scrub": true,
+          "speed": 0.6
+        }
+      },
+      "a11y": { "h1": true, "skip_to_content": true }
+    },
+    {
+      "section": "trusted-bar",
+      "content": "logos de medios, shop count, envío, garantía",
+      "layout": "Horizontal strip under hero with blurred background"
+    },
+    {
+      "section": "product-catalog",
+      "id": "catalog",
+      "content": {
+        "grid": "Masonry-like cards with rounded corners; each card: image, title, price, heart wishlist, quick view",
+        "filters": ["categoría", "tema", "colección", "precio"],
+        "behavior": "Hover raises card (translateY -6px) + subtle shadow + scale sticker preview"
+      },
+      "animation_gsap": {
+        "onScrollReveal": {
+          "targets": ".catalog__card",
+          "from": { "y": 40, "opacity": 0 },
+          "stagger": 0.05,
+          "duration": 0.8
+        }
+      }
+    },
+    {
+      "section": "featured-collections",
+      "content": "Horizontal scroll carousels con snaps; 'New', 'Best sellers', 'Artist collabs'",
+      "interaction": "Drag on desktop/mobile with inertial momentum; keyboard arrow nav"
+    },
+    {
+      "section": "how-it-works",
+      "content": [
+        {
+          "step": "Elige tu set",
+          "desc": "Selecciona entre colecciones o personaliza"
+        },
+        {
+          "step": "Personaliza (opcional)",
+          "desc": "Añade texto, color, tamaño"
+        },
+        { "step": "Recibe en casa", "desc": "Envío rápido y embalaje eco" }
+      ],
+      "visual": "3 cards with iconography and micro animations"
+    },
+    {
+      "section": "mockups-lifestyle",
+      "content": "Galería de uso real (laptops, planners, water bottles). Lightbox con swipe y keyboard support"
+    },
+    {
+      "section": "testimonials",
+      "content": "Carousel de reseñas con fotos, rating y microinteracciones; CTA secundario para enviar review"
+    },
+    {
+      "section": "social-proof / instagram",
+      "content": "Feed embebido o grid de imágenes UGC con CTA 'Usa #BloomStickers' y botón para seguir"
+    },
+    {
+      "section": "pricing / packs",
+      "content": "Tablas simples + toggles entre 'single' y 'pack' + CTA para 'comprar' y 'encargar'"
+    },
+    {
+      "section": "faq",
+      "content": "Preguntas frecuentes con accordion accesible (aria-expanded, roles)"
+    },
+    {
+      "section": "subscribe-cta",
+      "content": "Block CTA con gradiente sutil, input email, privacy note, incentivo (10% off)"
+    },
+    {
+      "section": "footer",
+      "content": "links, social, contacto, policy, mini sitemap, suscripción"
+    }
+  ],
+  "components_spec": {
+    "sticker_card": {
+      "structure": [
+        "image (square)",
+        "title",
+        "tags",
+        "price",
+        "actions (wishlist, quick-view)"
+      ],
+      "styles": {
+        "radius": "16px",
+        "elevation": "shadow-soft",
+        "overlay_blur": "6px"
+      },
+      "interactions": {
+        "hover": {
+          "transform": "translateY(-6px) scale(1.02)",
+          "shadow_increase": true
+        },
+        "quick_view": "modal with keyboard/esc close, focus trap"
+      },
+      "gsap": {
+        "hover_tilt": {
+          "target": ".sticker-card img",
+          "rotationX": 6,
+          "rotationY": 6,
+          "duration": 0.6,
+          "ease": "power3.out",
+          "onMouseLeave": "revert"
+        }
+      }
+    },
+    "cta_button": {
+      "variants": {
+        "solid": {
+          "bg": "--color-primary",
+          "color": "#fff",
+          "boxShadow": "0 10px 30px rgba(232,109,146,0.18)"
+        },
+        "outline": {
+          "border": "2px solid var(--color-primary)",
+          "bg": "transparent"
+        }
+      },
+      "accessibility": { "role": "button", "aria-pressed": false }
+    },
+    "modal": {
+      "overlay_opacity": 0.64,
+      "close_on_esc": true,
+      "trap_focus": true
+    }
+  },
+  "animations_and_transitions": {
+    "general": {
+      "easing": { "default": "power3.out" },
+      "durations": { "short": 0.24, "medium": 0.6, "long": 1.0 },
+      "micro_interactions": { "button": { "scale": 0.98, "duration": 0.12 } }
+    },
+    "gsap_patterns": {
+      "page_load": [
+        {
+          "selector": ".stagger",
+          "props": { "y": 30, "opacity": 0 },
+          "stagger": 0.06,
+          "duration": 0.9
+        }
+      ],
+      "scroll_triggered": [
+        {
+          "selector": ".reveal-on-scroll",
+          "props": { "y": 40, "opacity": 0 },
+          "start": "top 80%",
+          "scrub": false
+        }
+      ],
+      "parallax_layers": [
+        { "selector": ".parallax--slow", "speed": 0.2 },
+        { "selector": ".parallax--fast", "speed": 0.6 }
+      ],
+      "hover_effects": [
+        {
+          "selector": ".sticker-card",
+          "props": { "scale": 1.02, "y": -6 },
+          "ease": "power2.out"
+        }
+      ]
+    },
+    "implementation_notes": "Usar GSAP ScrollTrigger para pistas de scroll, `matchMedia` para condicionar anims por breakpoint, y `context` para limpiar animaciones en React."
+  },
+  "accessibility": {
+    "contrast": "Asegurar ratio 4.5:1 para texto normal; 3:1 para grandes headings",
+    "keyboard": "Todos los elementos interactivos navegables por teclado; focus-visible styles",
+    "aria": "Accordions, carousels y modals con roles y aria-attributes correctos",
+    "images": "alt text descriptivo; decorative=false images empty alt",
+    "reduced_motion": "Respetar `prefers-reduced-motion`: desactivar animaciones no esenciales"
+  },
+  "performance": {
+    "images": "Servir AVIF/WebP, lazy load, use srcset",
+    "fonts": "Preload critical fonts, use font-display:swap",
+    "bundle": "Code-splitting; defer non-critical scripts (GSAP core early, plugins loaded async)",
+    "lighthouse_target": ">=90 perf, >=90 accessibility, <=3s TTFB"
+  },
+  "tracking_and_measurement": {
+    "events_to_track": [
+      "hero_cta_click",
+      "add_to_cart",
+      "view_product_quickview",
+      "checkout_initiated",
+      "newsletter_subscribe"
+    ],
+    "suggested_tooling": [
+      "Google Analytics 4",
+      "Hotjar / FullStory (optional)",
+      "Facebook/Meta Pixel (if used)"
+    ]
+  },
+  "assets_and_content_needs": {
+    "images": [
+      { "name": "hero_mockup_1", "ratio": "16:9", "size": "1200x800" },
+      { "name": "product_1", "ratio": "1:1", "size": "800x800" },
+      { "name": "lifestyle_1", "ratio": "4:3", "size": "1600x1200" },
+      { "name": "og_image", "size": "1200x630" }
+    ],
+    "vectors": [
+      "logo_svg_fullcolor",
+      "logo_svg_mark",
+      "sticker_elements_svg_set"
+    ],
+    "icons": "SVG icon set (cart, heart, search, chevrons) — consistent stroke and rounded caps",
+    "copy": [
+      "hero heading",
+      "subheading",
+      "product descriptions (short+long)",
+      "shipping copy",
+      "faq copy",
+      "policy links"
+    ]
+  },
+  "deliverables": [
+    "Prompt JSON (este archivo)",
+    "Wireframe/structure (desktop + mobile)",
+    "High-fidelity Figma spec (recommended)",
+    "Next.js + Tailwind starter with GSAP integration (boilerplate)",
+    "Documentation: design tokens, accessibility checklist, SEO meta"
+  ],
+  "implementation_checklist": [
+    "Configurar proyecto Next.js + Tailwind y tokens de color",
+    "Agregar fuentes y preloads",
+    "Crear layout con header, hero y grid responsive",
+    "Implementar componentes: StickerCard, Carousel, Modal, CTA",
+    "Integrar GSAP + ScrollTrigger y pruebas con `prefers-reduced-motion`",
+    "Optimizar imágenes y assets",
+    "Configurar forms y tracking",
+    "Revisar accesibilidad (axe, manual keyboard test)",
+    "Preparar deploy (Vercel) y verificar performance"
+  ],
+  "notes_for_devs": {
+    "gsap_examples": [
+      {
+        "purpose": "Hero stagger entrance",
+        "code_snippet": "gsap.from('.hero__title', { y: 50, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.08 });"
+      },
+      {
+        "purpose": "ScrollTrigger reveal",
+        "code_snippet": "ScrollTrigger.create({ trigger: '.catalog__card', start: 'top 85%', onEnter: () => gsap.to('.catalog__card', { y: 0, opacity: 1, stagger: 0.05 }) });"
+      }
+    ],
+    "react_notes": "En componentes React usar `useEffect` y `gsap.context` para crear/cleanup animaciones; cargar plugins condicionalmente (import('gsap/ScrollTrigger'))."
+  },
+  "final_tips_and_creative_direction": {
+    "bold_choice": "Componer una atmósfera 'sticker garden' — capas de pegatinas flotando en primer plano, menta pastel como atmósfera y rosa vibrante para CTAs.",
+    "microcopy": {
+      "hero_cta": "Comprar ahora — vistas limitadas",
+      "subscribe": "Únete & consigue 10% OFF",
+      "trust": "Envío gratis a partir de $XX"
+    },
+    "aesthetic_guidance": "Evitar tipografías demasiado duras: priorizar redondeo y suavidad. Añadir sutil grain/noise en backgrounds para sensación 'papel'."
+  }
+}

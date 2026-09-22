@@ -1,264 +1,134 @@
-<div align="center">
-  <img src="./public/images/hero-developer-sin-fondo.png" alt="MatuDev" width="200"/>
-  
-  # 🚀 MatuDev Portfolio
+# matutech
 
-### Desarrollador Full Stack apasionado por crear experiencias digitales que impactan y transforman negocios
+Landing y catálogo de producto de **matutech** — Matías Francisco González,
+desarrollador de producto en Paraná, Entre Ríos.
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.38-FF0055?style=for-the-badge&logo=framer)](https://www.framer.com/motion/)
-
-[🌐 Ver Demo en Vivo](#) • [📧 Contacto](mailto:matiasgonzalez.652@gmail.com) • [💼 LinkedIn](https://www.linkedin.com/in/matias-gonzalez-1a75b6223/)
-
-</div>
-
----
-
-## ✨ Características Principales
-
-🎨 **Diseño Moderno & Responsivo**
-
-- Diseño glassmorphism con efectos neon
-- Tema oscuro/claro con transiciones suaves
-- Completamente responsive para todos los dispositivos
-
-⚡ **Animaciones Fluidas**
-
-- Animaciones scroll-reveal con Framer Motion
-- Transiciones suaves y naturales
-- Efectos interactivos en hover y tap
-
-🎯 **Optimizado para Conversión**
-
-- CTA estratégicamente ubicados
-- Integración directa con WhatsApp
-- Formularios de contacto y enlaces sociales
-
-🚀 **Performance Optimizado**
-
-- Server-side rendering con Next.js
-- Imágenes optimizadas con next/image
-- Carga rápida y SEO-friendly
-
----
-
-## 🛠️ Stack Tecnológico
-
-### Frontend
-
-- **Framework:** Next.js 16.2 (App Router)
-- **UI Library:** React 19.2
-- **Lenguaje:** TypeScript 5.0
-- **Estilos:** Tailwind CSS 4.0
-- **Animaciones:** Framer Motion 12.38
-- **Iconos:** Lucide React 1.8
-
-### Herramientas de Desarrollo
-
-- **Linter:** ESLint 9 + eslint-config-next
-- **PostCSS:** @tailwindcss/postcss
-- **Control de Versiones:** Git
-
----
-
-## 📁 Estructura del Proyecto
-
-```
-matudev/
-├── app/
-│   ├── components/
-│   │   ├── about-section.tsx      # Sección sobre mí
-│   │   ├── contact-section.tsx    # Contacto y redes sociales
-│   │   ├── cta-section.tsx        # Call-to-actions
-│   │   ├── footer.tsx             # Footer del sitio
-│   │   ├── hero-section.tsx       # Hero principal
-│   │   ├── navbar.tsx             # Navegación
-│   │   ├── particles-background.tsx # Fondo animado
-│   │   ├── projects-section.tsx   # Portafolio de proyectos
-│   │   ├── scroll-animations.tsx  # Componentes de animación
-│   │   ├── services-section.tsx   # Servicios ofrecidos
-│   │   ├── skills-section.tsx     # Habilidades técnicas
-│   │   ├── testimonials-section.tsx # Testimonios (opcional)
-│   │   └── theme-provider.tsx     # Provider de tema claro/oscuro
-│   ├── globals.css               # Estilos globales y variables CSS
-│   ├── layout.tsx                # Layout principal
-│   └── page.tsx                  # Página principal
-├── public/
-│   └── images/                   # Recursos visuales
-├── .gitignore
-├── eslint.config.mjs             # Configuración ESLint
-├── next.config.ts                # Configuración Next.js
-├── package.json
-├── postcss.config.mjs            # Configuración PostCSS
-├── tailwind.config.ts            # Configuración Tailwind
-└── tsconfig.json                 # Configuración TypeScript
-```
-
----
-
-## 🚀 Inicio Rápido
-
-### Prerrequisitos
-
-- Node.js 20+ instalado
-- npm, yarn, pnpm o bun
-
-### Instalación
-
-1. **Clonar el repositorio**
-
-   ```bash
-   git clone https://github.com/matiasfgonzalez/matudev.git
-   cd matudev
-   ```
-
-2. **Instalar dependencias**
-
-   ```bash
-   npm install
-   # o
-   yarn install
-   # o
-   pnpm install
-   ```
-
-3. **Ejecutar el servidor de desarrollo**
-
-   ```bash
-   npm run dev
-   # o
-   yarn dev
-   # o
-   pnpm dev
-   ```
-
-4. **Abrir en el navegador**
-
-   Visita [http://localhost:3000](http://localhost:3000) para ver el resultado.
-
----
-
-## 📜 Scripts Disponibles
+No es un portfolio de maquetas: la página es un catálogo de doce cosas que
+existen, con lo que resuelve cada una, por qué conviene y con qué está hecha.
 
 ```bash
-# Desarrollo local
-npm run dev
-
-# Compilar para producción
-npm run build
-
-# Ejecutar versión de producción
-npm run start
-
-# Ejecutar linter
-npm run lint
+npm install
+npm run dev      # http://localhost:3000
 ```
 
 ---
 
-## 🎨 Personalización
+## Cómo está armado
 
-### Tema y Colores
+```
+app/
+  lib/
+    site.ts          Marca, contacto y navegación. Un solo lugar que tocar.
+    products.ts      El catálogo: fuente única de la grilla, la ficha,
+                     los contadores del hero y los datos estructurados.
+  components/
+    aurora.tsx           El fondo animado (sin JavaScript)
+    brand.tsx            Logotipo, wordmark e íconos de redes
+    reveal.tsx           MotionProvider + animaciones al desplazar
+    navbar.tsx           Barra fija, tema y menú móvil
+    hero-section.tsx     Tesis + constelación de productos
+    products-section.tsx Filtros + grilla
+    product-card.tsx     Tarjeta del catálogo
+    product-sheet.tsx    Ficha completa (modal)
+    services-section.tsx · process-section.tsx · stack-section.tsx
+    about-section.tsx · faq-section.tsx · contact-section.tsx
+    footer.tsx · whatsapp-float.tsx
+  globals.css        El sistema de diseño entero
+  layout.tsx         Tipografías, metadatos, viewport y tema inicial
+  page.tsx           Composición + JSON-LD
+  icon.tsx           Ícono de pestaña generado
+  opengraph-image.tsx Vista previa al compartir el enlace
+public/
+  products/          Capturas de los productos
+  brand/             Marcas de producto
+```
 
-Los colores y variables del sistema de diseño se encuentran en `app/globals.css`:
+---
+
+## El sistema de diseño
+
+Tres estilos, **una capa cada uno**. Mezclados sin jerarquía quedan en barro.
+
+| Capa             | Estilo       | Dónde vive                                        |
+| ---------------- | ------------ | ------------------------------------------------- |
+| **Atmósfera**    | Aurora       | El fondo fijo. Nunca lleva texto encima.          |
+| **Superficie**   | Glassmorphism| Todo lo que contiene contenido: tarjetas, nav, ficha. |
+| **Control**      | Neumorfismo  | Sólo lo que se aprieta: botones, filtros, pods.   |
+
+El color de acción es **ámbar** y es lo único cálido de la página, así que
+ninguna llamada a la acción se confunde con decoración.
+
+Los tokens están en [`app/globals.css`](app/globals.css). Los que más se tocan:
 
 ```css
-:root {
-  --neon-blue: #3b82f6;
-  --neon-violet: #8b5cf6;
-  --neon-cyan: #06b6d4;
-  --neon-orange: #f97316;
-  --neon-pink: #ec4899;
-  --neon-green: #10b981;
-}
+--au-jade: #19e3a5;   /* aurora */
+--au-cyan: #22b8ff;
+--au-violet: #8b5cf6;
+--au-magenta: #e252c7;
+
+--signal: #ffb224;         /* relleno de las acciones */
+--signal-strong: #ffb224;  /* el mismo ámbar como texto (se oscurece en claro) */
 ```
 
-### Componentes Reutilizables
+**El modo claro no usa fondo blanco.** El neumorfismo necesita un tono medio
+(`#e7ebf3`) para que la luz y la sombra se lean; sobre blanco puro sólo se ve
+la sombra.
 
-El proyecto incluye componentes de animación reutilizables en `scroll-animations.tsx`:
+### Tipografía
 
-- `<ScrollReveal>` - Revela elementos al hacer scroll
-- `<StaggerContainer>` - Contenedor con animación escalonada
-- `<StaggerItem>` - Items con entrada escalonada
-
----
-
-## 🌐 Deployment
-
-### Vercel (Recomendado)
-
-La forma más fácil de deployar es usando [Vercel](https://vercel.com):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/matiasfgonzalez/matudev)
-
-### Otras Plataformas
-
-El proyecto también puede ser deployado en:
-
-- Netlify
-- Railway
-- AWS Amplify
-- Cloudflare Pages
-
-Consulta la [documentación de Next.js deployment](https://nextjs.org/docs/app/building-your-application/deploying) para más detalles.
+| Rol      | Familia              | Para qué                                  |
+| -------- | -------------------- | ----------------------------------------- |
+| Display  | Bricolage Grotesque  | Titulares. Variable, con eje óptico.      |
+| Cuerpo   | Manrope              | Texto corrido.                            |
+| Datos    | JetBrains Mono       | Cifras, versiones, etiquetas y stack.     |
 
 ---
 
-## 📸 Screenshots
+## Cargar o editar productos
 
-<div align="center">
-  <img src="./public/images/about-portrait.png" alt="About Section" width="400"/>
-  
-  *Sección profesional con diseño glassmorphism*
-</div>
+Todo el catálogo sale de [`app/lib/products.ts`](app/lib/products.ts). Agregar
+uno es agregar un objeto al arreglo: la grilla, los filtros, los contadores del
+hero, el pie y los datos estructurados se actualizan solos.
 
----
+Un producto sin `link` no muestra enlace roto: la ficha ofrece una demo por
+WhatsApp.
 
-## 🎯 Secciones del Portfolio
-
-- **Hero** - Presentación impactante con CTA
-- **Sobre Mí** - Información profesional y personal
-- **Habilidades** - Stack técnico organizado por categorías
-- **Proyectos** - Portfolio de trabajos destacados
-- **Servicios** - Servicios ofrecidos con detalles
-- **Call-to-Action** - Invitaciones estratégicas a la acción
-- **Contacto** - Múltiples formas de contacto (Email, WhatsApp, Redes)
+Para el ícono, agregá una entrada en
+[`app/components/product-icons.tsx`](app/components/product-icons.tsx) usando un
+ícono de **lucide-react** — una sola familia en toda la página, sin emojis.
 
 ---
 
-## 🤝 Contacto
+## Decisiones que conviene no deshacer
 
-<div align="center">
-
-### Matías González
-
-**Desarrollador Full Stack**
-
-📧 [matiasgonzalez.652@gmail.com](mailto:matiasgonzalez.652@gmail.com)
-
-📱 [WhatsApp](https://wa.me/5493454432164)
-
-🔗 [LinkedIn](https://www.linkedin.com/in/matias-gonzalez-1a75b6223/) • [GitHub](https://github.com/matiasfgonzalez) • [Instagram](https://instagram.com/matute_2gonzalez)
-
-📍 Paraná - Entre Ríos, Argentina 🇦🇷
-
-</div>
+| Decisión | Por qué |
+| --- | --- |
+| El movimiento reducido se resuelve con `MotionConfig`, no con una rama en el render | Preguntar por la preferencia al dibujar da un árbol en el servidor y otro en el cliente. La hidratación no cuadra, y el contenido se queda en `opacity: 0` — invisible justo para quien pidió menos animación. |
+| `.glass` no fija `position` | Le ganaba a la utilidad `absolute` de Tailwind y las tarjetas flotantes caían al flujo normal. La posición la pide quien la usa. |
+| La ficha de producto se monta en `document.body` | `<main>` tiene `z-index` propio y crea contexto de apilamiento: sin portal, el modal queda debajo de la barra fija. |
+| `viewport` es su propio `export` en el layout | Dentro de `metadata` está deprecado desde Next 14. |
+| El tema se fija con un script en `<head>` antes del primer pintado | Sin eso, quien eligió modo claro ve un destello oscuro en cada carga. |
+| El botón de WhatsApp de la barra se esconde con un contenedor | `.btn` fija `display: inline-flex` y le gana a la utilidad `hidden`. |
+| El `<noscript>` devuelve la opacidad | Las animaciones de entrada dejan el contenido en `opacity: 0` hasta que corre el JavaScript. |
 
 ---
 
-## 📝 Licencia
+## Comandos
 
-Este proyecto es de código abierto y está disponible bajo la licencia MIT.
+```bash
+npm run dev      # desarrollo
+npm run build    # compilar
+npm run start    # servir lo compilado
+npm run lint     # ESLint
+```
 
 ---
 
-<div align="center">
+## Contacto
 
-**Hecho con ❤️ y ☕ por [MatuDev](https://github.com/matiasfgonzalez)**
+**Matías Francisco González** — Paraná, Entre Ríos, Argentina
 
-⭐ Si te gustó este proyecto, ¡dale una estrella en GitHub!
-
-</div>
+[WhatsApp](https://wa.me/5493454432164) ·
+[matiasgonzalez.652@gmail.com](mailto:matiasgonzalez.652@gmail.com) ·
+[LinkedIn](https://www.linkedin.com/in/matias-gonzalez-1a75b6223/) ·
+[GitHub](https://github.com/matiasfgonzalez)

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  
+  <defs>
+    <linearGradient id="g1" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#16A34A"/><stop offset="1" stop-color="#22C55E"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#22C55E"/><stop offset="1" stop-color="#6EE05A"/>
+    </linearGradient>
+    <linearGradient id="g3" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#6EE05A"/><stop offset="1" stop-color="#B8FF3C"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.92" r="0.75">
+      <stop offset="0" stop-color="#22C55E" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#22C55E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="#0A0E0C"/>
+  <rect width="1024" height="1024" fill="url(#glow)"/>
+  <g transform="translate(129.79 191.19) scale(1.2531)">
+  <g>
+    <!--
+      G: el arco abre arriba a la derecha y baja hasta el espolón. Sin ese
+      espolón vertical bajo el travesaño, la letra se lee como una "e".
+    -->
+    <path
+      d="M 306 150 A 150 150 0 1 0 330 331"
+      fill="none" stroke="#FFFFFF" stroke-width="62"
+      stroke-linecap="round" stroke-linejoin="round"/>
+    <path
+      d="M 262 256 L 330 256 L 330 334"
+      fill="none" stroke="#FFFFFF" stroke-width="62"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- barras de progreso, con una leve inclinación que les da movimiento -->
+    <g transform="translate(392 246) skewX(-9)">
+      <rect x="0"   y="30"  width="36" height="92"  rx="18" fill="url(#g1)"/>
+      <rect x="56"  y="-28" width="36" height="150" rx="18" fill="url(#g2)"/>
+      <rect x="112" y="-96" width="36" height="218" rx="18" fill="url(#g3)"/>
+    </g>
+  </g></g>
+</svg>
