@@ -30,7 +30,7 @@ const steps = [
     n: '04',
     title: 'Publicación',
     time: '1 a 2 semanas',
-    body: 'Despliegue, dominio, correos, respaldos y —si es una app— la ficha de tienda con sus capturas y su política de privacidad. Te entrego el código y las llaves.',
+    body: 'Despliegue, dominio, correos, respaldos y, si es una app, la ficha de tienda con sus capturas y su política de privacidad. Te entrego el código y las llaves.',
   },
   {
     n: '05',
@@ -54,8 +54,7 @@ export function ProcessSection() {
       <div className="shell relative" style={{ zIndex: 1 }}>
         <div className="grid lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-10 lg:gap-14">
           <Reveal>
-            <p className="eyebrow">Proceso</p>
-            <h2 className="title-lg mt-5" style={{ maxWidth: '14ch' }}>
+            <h2 className="title-lg" style={{ maxWidth: '14ch' }}>
               Cómo se trabaja acá.
             </h2>
             <p className="lede mt-5">

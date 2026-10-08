@@ -65,8 +65,7 @@ export function StackSection() {
     <section id="stack" className="band">
       <div className="shell relative" style={{ zIndex: 1 }}>
         <Reveal>
-          <p className="eyebrow">Stack</p>
-          <h2 className="title-lg mt-5" style={{ maxWidth: '20ch' }}>
+          <h2 className="title-lg" style={{ maxWidth: '20ch' }}>
             Herramientas elegidas,
             <br />
             no coleccionadas.
@@ -78,43 +77,43 @@ export function StackSection() {
           </p>
         </Reveal>
 
-        <RevealGroup
-          as="ul"
-          className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 list-none p-0"
-        >
-          {groups.map((g) => (
-            <RevealItem as="li" key={g.label}>
-              <div
-                className="glass h-full"
-                style={{ padding: '1.35rem 1.5rem' }}
-              >
-                <p
-                  className="mono flex items-center gap-2"
-                  style={{
-                    fontSize: '0.6875rem',
-                    letterSpacing: '0.13em',
-                    textTransform: 'uppercase',
-                    color: g.tone,
-                  }}
-                >
-                  <span
-                    className="status__dot"
-                    style={{ background: g.tone }}
-                    aria-hidden="true"
-                  />
-                  {g.label}
-                </p>
-                <ul className="mt-4 flex flex-wrap gap-1.5">
-                  {g.items.map((item) => (
-                    <li key={item} className="chip">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </RevealItem>
-          ))}
-        </RevealGroup>
+        {/* Un solo panel, agrupado por función. Seis tarjetas iguales acá
+            repetirían el bento de Servicios y se leerían como relleno. */}
+        <Reveal delay={0.06}>
+          <div
+            className="glass mt-10"
+            style={{ padding: 'clamp(1.4rem, 3.4vw, 2.25rem)' }}
+          >
+            <RevealGroup
+              as="ul"
+              className="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 list-none p-0 m-0"
+            >
+              {groups.map((g) => (
+                <RevealItem as="li" key={g.label}>
+                  <p
+                    className="font-semibold"
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '1.0625rem',
+                      letterSpacing: '-0.02em',
+                      paddingLeft: '0.75rem',
+                      borderLeft: `2px solid ${g.tone}`,
+                    }}
+                  >
+                    {g.label}
+                  </p>
+                  <ul className="mt-3.5 flex flex-wrap gap-1.5">
+                    {g.items.map((item) => (
+                      <li key={item} className="chip">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </RevealItem>
+              ))}
+            </RevealGroup>
+          </div>
+        </Reveal>
 
         <Reveal delay={0.1}>
           <dl className="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-2.5">

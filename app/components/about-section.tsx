@@ -45,8 +45,7 @@ export function AboutSection() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <p className="eyebrow">Sobre mí</p>
-            <h2 className="title-lg mt-5" style={{ maxWidth: '18ch' }}>
+            <h2 className="title-lg" style={{ maxWidth: '18ch' }}>
               Matías González,
               <br />
               el que responde.

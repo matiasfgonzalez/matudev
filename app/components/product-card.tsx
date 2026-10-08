@@ -18,22 +18,13 @@ export function ProductCard({
 
   return (
     <article
-      className="glass glass--edge h-full flex flex-col"
+      className="glass glass--edge lift h-full flex flex-col"
       style={
         {
           '--accent': accent,
           padding: 'clamp(1.25rem, 3vw, 1.6rem)',
-          transition: 'transform var(--t-mid), box-shadow var(--t-mid)',
         } as React.CSSProperties
       }
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-4px)';
-        e.currentTarget.style.boxShadow = 'var(--lift-hi)';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = '';
-        e.currentTarget.style.boxShadow = '';
-      }}
     >
       <header className="flex items-start justify-between gap-3">
         <span
@@ -100,7 +91,7 @@ export function ProductCard({
           className="btn btn--ghost btn--sm"
         >
           Ver detalle
-          <ArrowUpRight size={15} />
+          <ArrowUpRight size={15} className="nudge nudge--diag" />
           <span className="sr-only"> de {product.name}</span>
         </button>
       </footer>

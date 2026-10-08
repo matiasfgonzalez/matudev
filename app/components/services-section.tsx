@@ -102,8 +102,7 @@ export function ServicesSection() {
     <section id="servicios" className="band">
       <div className="shell relative" style={{ zIndex: 1 }}>
         <Reveal>
-          <p className="eyebrow">Servicios</p>
-          <h2 className="title-lg mt-5" style={{ maxWidth: '16ch' }}>
+          <h2 className="title-lg" style={{ maxWidth: '16ch' }}>
             En qué te puedo ayudar.
           </h2>
           <p className="lede mt-5">
@@ -113,62 +112,110 @@ export function ServicesSection() {
           </p>
         </Reveal>
 
+        {/* Bento con ritmo: ancha + chica, un trío, y el cierre a lo ancho.
+            Las anchas son el punto de entrada y la promesa de después. */}
         <RevealGroup
           as="ul"
           className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3 list-none p-0"
         >
-          {services.map((s) => (
-            <RevealItem as="li" key={s.title} className="h-full">
-              <article
-                className="glass glass--edge h-full flex flex-col"
-                style={
-                  {
-                    '--accent': s.tone,
-                    padding: 'clamp(1.25rem, 3vw, 1.6rem)',
-                  } as React.CSSProperties
-                }
+          {services.map((s, i) => {
+            const wide = i === 0 || i === services.length - 1;
+            return (
+              <RevealItem
+                as="li"
+                key={s.title}
+                className={`h-full ${
+                  wide
+                    ? i === 0
+                      ? 'md:col-span-2'
+                      : 'md:col-span-2 lg:col-span-3'
+                    : ''
+                }`}
               >
-                <span
-                  className="neu grid place-items-center"
-                  style={{ width: '2.875rem', height: '2.875rem' }}
+                <article
+                  className={`glass glass--edge h-full ${
+                    wide ? 'md:grid md:grid-cols-2 md:gap-8 md:items-start' : 'flex flex-col'
+                  }`}
+                  style={
+                    {
+                      '--accent': s.tone,
+                      padding: wide
+                        ? 'clamp(1.4rem, 3.4vw, 2.1rem)'
+                        : 'clamp(1.25rem, 3vw, 1.6rem)',
+                      /* Las anchas llevan una luz del color del servicio: le
+                         da cuerpo al bento sin sumar otro acento. */
+                      ...(wide && {
+                        background: `radial-gradient(120% 140% at 0% 0%, color-mix(in oklab, ${s.tone} 13%, transparent), transparent 55%), var(--glass-bg)`,
+                      }),
+                    } as React.CSSProperties
+                  }
                 >
-                  <s.Icon size={20} strokeWidth={1.8} style={{ color: s.tone }} />
-                </span>
-
-                <h3
-                  className="title-md mt-5"
-                  style={{ fontSize: '1.1875rem', lineHeight: 1.25 }}
-                >
-                  {s.title}
-                </h3>
-
-                <p
-                  className="body-muted mt-2.5"
-                  style={{ fontSize: '0.9375rem', lineHeight: 1.62 }}
-                >
-                  {s.body}
-                </p>
-
-                <ul className="mt-4 flex flex-col gap-1.5">
-                  {s.includes.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-2"
-                      style={{ fontSize: '0.8438rem', lineHeight: 1.5 }}
+                  <div>
+                    <span
+                      className="neu grid place-items-center"
+                      style={{
+                        width: wide ? '3.25rem' : '2.875rem',
+                        height: wide ? '3.25rem' : '2.875rem',
+                      }}
                     >
-                      <Check
-                        size={14}
-                        strokeWidth={2.4}
-                        style={{ color: s.tone, flex: 'none', marginTop: 3 }}
-                        aria-hidden="true"
+                      <s.Icon
+                        size={wide ? 22 : 20}
+                        strokeWidth={1.8}
+                        style={{ color: s.tone }}
                       />
-                      <span className="body-muted">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            </RevealItem>
-          ))}
+                    </span>
+
+                    <h3
+                      className="title-md mt-5"
+                      style={{
+                        fontSize: wide ? '1.5rem' : '1.1875rem',
+                        lineHeight: 1.2,
+                        maxWidth: '22ch',
+                      }}
+                    >
+                      {s.title}
+                    </h3>
+
+                    <p
+                      className="body-muted mt-2.5"
+                      style={{
+                        fontSize: wide ? '1rem' : '0.9375rem',
+                        lineHeight: 1.62,
+                        maxWidth: '52ch',
+                      }}
+                    >
+                      {s.body}
+                    </p>
+                  </div>
+
+                  <ul
+                    className={`flex flex-col gap-1.5 ${
+                      wide ? 'mt-5 md:mt-1 md:gap-2.5' : 'mt-4'
+                    }`}
+                  >
+                    {s.includes.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start gap-2"
+                        style={{
+                          fontSize: wide ? '0.9063rem' : '0.8438rem',
+                          lineHeight: 1.5,
+                        }}
+                      >
+                        <Check
+                          size={14}
+                          strokeWidth={2.4}
+                          style={{ color: s.tone, flex: 'none', marginTop: 3 }}
+                          aria-hidden="true"
+                        />
+                        <span className="body-muted">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              </RevealItem>
+            );
+          })}
         </RevealGroup>
 
         <Reveal delay={0.1}>
@@ -217,7 +264,7 @@ export function ServicesSection() {
               className="btn btn--signal shrink-0"
             >
               <WhatsAppIcon size={17} />
-              Pedir presupuesto
+              Escribime por WhatsApp
             </a>
           </div>
         </Reveal>

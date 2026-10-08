@@ -8,7 +8,6 @@ import {
   DatabaseBackup,
   CalendarCheck,
   Trophy,
-  ArrowDown,
   ArrowRight,
 } from 'lucide-react';
 import { WhatsAppIcon } from './brand';
@@ -92,7 +91,7 @@ export function HeroSection() {
       id="top"
       className="relative"
       style={{
-        paddingTop: 'clamp(8rem, 18vh, 11rem)',
+        paddingTop: 'clamp(7rem, 15vh, 9.5rem)',
         paddingBottom: 'clamp(3rem, 8vw, 6rem)',
       }}
     >
@@ -100,32 +99,23 @@ export function HeroSection() {
         <div className="grid gap-12 lg:gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:items-center">
           {/* ── Tesis ─────────────────────────────────────────────── */}
           <div className="text-center lg:text-left">
-            <motion.p {...rise(0)} className="eyebrow mb-6">
-              <span
-                className="status__dot"
-                style={{ color: 'var(--ok)', background: 'var(--ok)' }}
-              />
-              {site.location}
-            </motion.p>
-
-            <motion.h1 {...rise(0.06)} className="title-xl">
+            <motion.h1 {...rise(0)} className="title-xl">
               Software que
               <br />
               <span className="gleam">termina publicado</span>.
             </motion.h1>
 
             <motion.p
-              {...rise(0.14)}
+              {...rise(0.08)}
               className="lede mt-6 mx-auto lg:mx-0"
+              style={{ maxWidth: '44ch' }}
             >
-              Soy {site.legalName}. Diseño y construyo apps móviles, plataformas
-              web y herramientas de escritorio, y las llevo hasta donde se usan
-              de verdad: la tienda de aplicaciones, el navegador de tu cliente,
-              la computadora del negocio.
+              Soy Matías González. Diseño y construyo apps, plataformas web y
+              herramientas de escritorio, y las dejo funcionando en producción.
             </motion.p>
 
             <motion.div
-              {...rise(0.22)}
+              {...rise(0.16)}
               className="mt-9 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
             >
               <a
@@ -135,17 +125,17 @@ export function HeroSection() {
                 className="btn btn--signal"
               >
                 <WhatsAppIcon size={18} />
-                Contame tu proyecto
+                Escribime por WhatsApp
               </a>
               <a href="#productos" className="btn btn--ghost">
                 Ver el catálogo
-                <ArrowRight size={17} />
+                <ArrowRight size={17} className="nudge" />
               </a>
             </motion.div>
 
             {/* Prueba antes del scroll: cuatro números que se pueden verificar. */}
             <motion.dl
-              {...rise(0.3)}
+              {...rise(0.24)}
               className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-2.5 max-w-lg mx-auto lg:mx-0"
             >
               {proof.map((item) => (
@@ -219,7 +209,7 @@ export function HeroSection() {
                     borderRadius: 999,
                     zIndex: 3,
                   }}
-                  initial={{ opacity: 0, scale: 0.7 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1, y: [0, -7, 0] }}
                   transition={{
                     opacity: { duration: 0.5, delay: 0.7 + i * 0.1 },
@@ -262,30 +252,6 @@ export function HeroSection() {
           </motion.div>
         </div>
 
-        <motion.a
-          href="#productos"
-          {...rise(0.5)}
-          className="hidden md:flex mt-16 items-center gap-2 mx-auto w-fit"
-          style={{
-            color: 'var(--fg-dim)',
-            fontSize: '0.75rem',
-            minHeight: '2.75rem',
-            padding: '0 0.75rem',
-          }}
-        >
-          <span
-            className="mono"
-            style={{ letterSpacing: '0.18em', textTransform: 'uppercase' }}
-          >
-            El catálogo
-          </span>
-          <motion.span
-            animate={{ y: [0, 5, 0] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <ArrowDown size={15} />
-          </motion.span>
-        </motion.a>
       </div>
     </section>
   );

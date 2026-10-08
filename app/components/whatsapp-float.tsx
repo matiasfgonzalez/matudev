@@ -1,7 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { useState } from 'react';
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+} from 'framer-motion';
 import { WhatsAppIcon } from './brand';
 import { links } from '../lib/site';
 
@@ -13,12 +18,10 @@ import { links } from '../lib/site';
 export function WhatsAppFloat() {
   const [show, setShow] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > window.innerHeight * 0.85);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, 'change', (y) =>
+    setShow(y > window.innerHeight * 0.85)
+  );
 
   return (
     <AnimatePresence>
@@ -32,14 +35,23 @@ export function WhatsAppFloat() {
             right: 'max(1rem, env(safe-area-inset-right))',
             bottom: 'max(1rem, env(safe-area-inset-bottom))',
           }}
-          initial={{ opacity: 0, scale: 0.7, y: 12 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.7, y: 12 }}
-          transition={{ duration: 0.28, ease: [0.34, 1.4, 0.64, 1] }}
+          initial={{ opacity: 0, scale: 0.9, y: 12 }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            transition: { type: 'spring', duration: 0.45, bounce: 0.25 },
+          }}
+          exit={{
+            opacity: 0,
+            scale: 0.92,
+            y: 8,
+            transition: { duration: 0.16, ease: [0.16, 1, 0.3, 1] },
+          }}
           aria-label="Escribir por WhatsApp"
         >
           <span
-            className="neu grid place-items-center"
+            className="neu press grid place-items-center"
             style={{
               width: '3.5rem',
               height: '3.5rem',

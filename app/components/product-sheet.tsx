@@ -77,8 +77,8 @@ export function ProductSheet({
       className="fixed inset-0 z-[80] flex items-end sm:items-center justify-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.2 }}
+      exit={{ opacity: 0, transition: { duration: 0.18 } }}
+      transition={{ duration: 0.22 }}
     >
       <button
         type="button"
@@ -102,12 +102,25 @@ export function ProductSheet({
             maxHeight: '92dvh',
             margin: '0 auto',
             borderRadius: 'var(--r-xl)',
+            /* Al llegar al final del contenido, el scroll no se pasa a la
+               página de atrás. */
+            overscrollBehavior: 'contain',
           } as React.CSSProperties
         }
-        initial={{ opacity: 0, y: 40, scale: 0.98 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 24, scale: 0.98 }}
-        transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0, y: 48, scale: 0.98 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          /* Curva de cajón tipo iOS: arranca decidida y frena suave. */
+          transition: { duration: 0.42, ease: [0.32, 0.72, 0, 1] },
+        }}
+        exit={{
+          opacity: 0,
+          y: 24,
+          scale: 0.98,
+          transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] },
+        }}
       >
         {/* Franja de acento: identifica el producto sin repetir el nombre. */}
         <div
@@ -118,7 +131,15 @@ export function ProductSheet({
           }}
         />
 
-        <div style={{ padding: 'clamp(1.25rem, 4vw, 2.25rem)' }}>
+        <div
+          style={{
+            padding: 'clamp(1.25rem, 4vw, 2.25rem)',
+            /* En el teléfono la ficha apoya abajo: que los botones no queden
+               debajo de la barra de inicio. */
+            paddingBottom:
+              'calc(clamp(1.25rem, 4vw, 2.25rem) + env(safe-area-inset-bottom, 0px))',
+          }}
+        >
           {/* ── Encabezado ─────────────────────────────────────────── */}
           <header className="flex items-start gap-4">
             <span
@@ -159,7 +180,7 @@ export function ProductSheet({
               ref={closeRef}
               type="button"
               onClick={onClose}
-              className="neu grid place-items-center shrink-0"
+              className="neu press grid place-items-center shrink-0"
               style={{ width: '2.75rem', height: '2.75rem', borderRadius: 999 }}
               aria-label="Cerrar ficha"
             >

@@ -35,7 +35,7 @@
   --au-cyan: #22b8ff;
   --au-violet: #8b5cf6;
   --au-magenta: #e252c7;
-  --aurora-opacity: 0.55;
+  --aurora-opacity: 0.45;
   --aurora-blur: 90px;
 
   /* ── Señal (acción) ───────────────────────────────────────────────── */
@@ -199,6 +199,23 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
   -webkit-text-size-adjust: 100%;
+  /* El destello gris al tocar es la seña más clara de "esto es una web".
+     Cada control tiene su propio :active, así que no se pierde respuesta. */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Controles: click inmediato (sin la espera del doble toque) y sin selección
+   de texto ni menú contextual al mantener apretado. El contenido sigue siendo
+   seleccionable: sólo se toca lo que se aprieta. */
+button,
+.btn,
+.neu,
+.rail__item,
+[role='button'] {
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 body {
@@ -457,9 +474,26 @@ a {
   pointer-events: none;
 }
 
-.glass--edge:hover::after,
 .glass--edge:focus-within::after {
   opacity: 0.85;
+}
+
+/* Tarjeta que se levanta al apuntarla. Sólo con puntero real: en táctil el
+   :hover queda pegado después del toque y la tarjeta se queda flotando. */
+.lift {
+  transition:
+    transform var(--t-mid),
+    box-shadow var(--t-mid);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .glass--edge:hover::after {
+    opacity: 0.85;
+  }
+  .lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--lift-hi);
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -511,15 +545,34 @@ a {
     filter var(--t-fast);
 }
 
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    var(--neu-out),
-    0 12px 28px -14px color-mix(in oklab, var(--signal) 70%, transparent);
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      var(--neu-out),
+      0 12px 28px -14px color-mix(in oklab, var(--signal) 70%, transparent);
+  }
 }
 
+/* La respuesta llega cuando el dedo apoya, no cuando se levanta. */
 .btn:active {
-  transform: translateY(0);
+  transform: scale(0.97);
+  box-shadow: var(--neu-in-sm);
+  transition-duration: 0.1s;
+}
+
+/* Lo mismo para cualquier otra cosa que se aprieta: íconos extruidos,
+   el correo, las redes. */
+.press {
+  transition:
+    transform 0.16s var(--ease),
+    box-shadow 0.16s var(--ease);
+}
+.press:active {
+  transform: scale(0.96);
+  transition-duration: 0.1s;
+}
+.neu.press:active {
   box-shadow: var(--neu-in-sm);
 }
 
@@ -534,22 +587,37 @@ a {
   font-weight: 750;
 }
 
-.btn--signal:hover {
-  filter: brightness(1.06);
-  box-shadow:
-    var(--neu-out),
-    0 16px 36px -14px color-mix(in oklab, var(--signal) 85%, transparent);
-}
-
 .btn--ghost {
   --btn-bg: transparent;
   box-shadow: none;
   border-color: var(--line-strong);
 }
 
-.btn--ghost:hover {
-  background: color-mix(in oklab, var(--ink-600) 60%, transparent);
-  box-shadow: var(--neu-out-sm);
+@media (hover: hover) and (pointer: fine) {
+  .btn--signal:hover {
+    filter: brightness(1.06);
+    box-shadow:
+      var(--neu-out),
+      0 16px 36px -14px color-mix(in oklab, var(--signal) 85%, transparent);
+  }
+
+  .btn--ghost:hover {
+    background: color-mix(in oklab, var(--ink-600) 60%, transparent);
+    box-shadow: var(--neu-out-sm);
+  }
+}
+
+/* La flecha acompaña al gesto: avanza un poco cuando el botón la promete. */
+.btn .nudge {
+  transition: transform var(--t-fast);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover .nudge {
+    transform: translateX(3px);
+  }
+  .btn:hover .nudge--diag {
+    transform: translate(2px, -2px);
+  }
 }
 
 .btn--sm {
@@ -573,6 +641,7 @@ a {
 
 .rail__item {
   position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -593,13 +662,24 @@ a {
     box-shadow var(--t-fast);
 }
 
-.rail__item:hover {
-  color: var(--fg);
+@media (hover: hover) and (pointer: fine) {
+  .rail__item:hover {
+    color: var(--fg);
+  }
 }
 
 .rail__item[aria-pressed='true'],
 .rail__item[data-active='true'] {
   color: var(--fg);
+}
+
+/* La pastilla del elemento activo es una sola y se desliza entre opciones
+   (layoutId en el componente): se ve de dónde viene y a dónde va. */
+.rail__pill {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
   background: var(--neu-bg);
   box-shadow: var(--neu-out-sm);
 }
@@ -665,12 +745,7 @@ a {
 /* Sólo la palabra que importa lleva el degradado. Si va toda la frase, no
    destaca nada. */
 .gleam {
-  background: linear-gradient(
-    100deg,
-    var(--au-jade),
-    var(--au-cyan) 42%,
-    var(--au-violet)
-  );
+  background: linear-gradient(100deg, var(--au-jade), var(--au-cyan) 85%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

@@ -89,6 +89,13 @@ export function ProductsSection() {
                     aria-pressed={filter === f.id}
                     onClick={() => setFilter(f.id)}
                   >
+                    {filter === f.id && (
+                      <motion.span
+                        layoutId="filter-pill"
+                        className="rail__pill"
+                        transition={{ type: 'spring', duration: 0.4, bounce: 0 }}
+                      />
+                    )}
                     {Icon && (
                       <Icon size={14} strokeWidth={1.9} aria-hidden="true" />
                     )}

@@ -31,7 +31,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="btn btn--ghost btn--sm mt-5"
             >
-              Empezar una conversación
+              Escribime por WhatsApp
             </a>
           </div>
 

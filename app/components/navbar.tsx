@@ -1,7 +1,12 @@
 'use client';
 
 import { useEffect, useState, useSyncExternalStore } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+} from 'framer-motion';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 import { Logomark, Wordmark, WhatsAppIcon } from './brand';
 import { links, nav } from '../lib/site';
@@ -21,6 +26,10 @@ function subscribeTheme(onChange: () => void) {
   return () => observer.disconnect();
 }
 
+/* La barra de estado del teléfono acompaña al tema elegido a mano, no sólo al
+   del sistema: si no, quien eligió claro ve una barra negra arriba. */
+const themeColor: Record<Theme, string> = { dark: '#04060b', light: '#e7ebf3' };
+
 function readTheme(): Theme {
   return document.documentElement.getAttribute('data-theme') === 'light'
     ? 'light'
@@ -37,12 +46,16 @@ export function Navbar() {
     () => 'dark' as Theme
   );
 
+  /* useScroll agrupa las lecturas por cuadro; el estado sólo cambia al
+     cruzar el umbral, no en cada píxel. */
+  const { scrollY } = useScroll();
+  useMotionValueEvent(scrollY, 'change', (y) => setCondensed(y > 24));
+
   useEffect(() => {
-    const onScroll = () => setCondensed(window.scrollY > 24);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    document
+      .querySelectorAll('meta[name="theme-color"]')
+      .forEach((m) => m.setAttribute('content', themeColor[theme]));
+  }, [theme]);
 
   /* Resalta la sección en la que está el lector. */
   useEffect(() => {
@@ -95,7 +108,7 @@ export function Navbar() {
       <header
         className="fixed inset-x-0 top-0 z-50"
         style={{
-          paddingTop: condensed ? '0.5rem' : '1rem',
+          paddingTop: `calc(${condensed ? '0.5rem' : '1rem'} + env(safe-area-inset-top, 0px))`,
           paddingBottom: condensed ? '0.5rem' : '1rem',
           transition: 'padding var(--t-mid)',
         }}
@@ -131,8 +144,14 @@ export function Navbar() {
                   aria-current={active === item.href ? 'true' : undefined}
                   className="rail__item"
                   data-active={active === item.href}
-                  style={{ background: 'transparent', boxShadow: 'none' }}
                 >
+                  {active === item.href && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="rail__pill"
+                      transition={{ type: 'spring', duration: 0.4, bounce: 0 }}
+                    />
+                  )}
                   {item.label}
                 </a>
               ))}
@@ -142,7 +161,7 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={toggleTheme}
-                className="neu grid place-items-center"
+                className="neu press grid place-items-center"
                 style={{ width: '2.75rem', height: '2.75rem', borderRadius: 999 }}
                 aria-label={
                   theme === 'dark'
@@ -162,14 +181,14 @@ export function Navbar() {
                   style={{ borderRadius: 999 }}
                 >
                   <WhatsAppIcon size={16} />
-                  Hablemos
+                  Escribime
                 </a>
               </span>
 
               <button
                 type="button"
                 onClick={() => setOpen(true)}
-                className="neu grid place-items-center lg:hidden"
+                className="neu press grid place-items-center lg:hidden"
                 style={{ width: '2.75rem', height: '2.75rem', borderRadius: 999 }}
                 aria-label="Abrir menú"
                 aria-expanded={open}
@@ -204,12 +223,26 @@ export function Navbar() {
 
             <motion.nav
               aria-label="Secciones"
-              className="glass glass--solid absolute inset-x-3 top-3 p-5"
-              style={{ borderRadius: 'var(--r-xl)' }}
-              initial={{ opacity: 0, y: -16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              className="glass glass--solid absolute inset-x-3 p-5"
+              style={{
+                top: 'calc(0.75rem + env(safe-area-inset-top, 0px))',
+                borderRadius: 'var(--r-xl)',
+                /* Crece desde el botón que lo abrió, arriba a la derecha. */
+                transformOrigin: 'top right',
+              }}
+              initial={{ opacity: 0, scale: 0.96, y: -8 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                y: 0,
+                transition: { duration: 0.26, ease: [0.16, 1, 0.3, 1] },
+              }}
+              exit={{
+                opacity: 0,
+                scale: 0.97,
+                y: -6,
+                transition: { duration: 0.16, ease: [0.16, 1, 0.3, 1] },
+              }}
             >
               <div className="flex items-center justify-between mb-5">
                 <div className="flex items-center gap-2.5">
@@ -219,7 +252,7 @@ export function Navbar() {
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="neu grid place-items-center"
+                  className="neu press grid place-items-center"
                   style={{
                     width: '2.75rem',
                     height: '2.75rem',

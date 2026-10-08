@@ -47,8 +47,7 @@ export function FaqSection() {
       <div className="shell relative" style={{ zIndex: 1 }}>
         <div className="grid lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] gap-10 lg:gap-14">
           <Reveal>
-            <p className="eyebrow">Preguntas</p>
-            <h2 className="title-lg mt-5" style={{ maxWidth: '14ch' }}>
+            <h2 className="title-lg" style={{ maxWidth: '14ch' }}>
               Lo que casi todos preguntan.
             </h2>
             <p className="lede mt-5">
@@ -63,7 +62,7 @@ export function FaqSection() {
               className="btn btn--ghost mt-7"
             >
               <WhatsAppIcon size={17} />
-              Preguntar por WhatsApp
+              Escribime por WhatsApp
             </a>
           </Reveal>
 

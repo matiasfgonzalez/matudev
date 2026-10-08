@@ -27,7 +27,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.brand} — ${site.tagline}`,
+    default: `${site.brand} | ${site.tagline}`,
     template: `%s · ${site.brand}`,
   },
   description:
@@ -52,13 +52,13 @@ export const metadata: Metadata = {
     locale: 'es_AR',
     url: site.url,
     siteName: site.brand,
-    title: `${site.brand} — ${site.tagline}`,
+    title: `${site.brand} | ${site.tagline}`,
     description:
       'Catálogo de productos y desarrollos: apps móviles, plataformas web y herramientas de escritorio, con lo que resuelve cada uno.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${site.brand} — ${site.tagline}`,
+    title: `${site.brand} | ${site.tagline}`,
     description:
       'Apps y plataformas que salen a producción. Catálogo, beneficios y stack.',
   },
@@ -71,6 +71,9 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
+  /* Pinta debajo del notch y de la barra de inicio. Sin esto los
+     `env(safe-area-inset-*)` valen 0 y no protegen nada. */
+  viewportFit: 'cover',
   themeColor: [
     { media: '(prefers-color-scheme: dark)', color: '#04060b' },
     { media: '(prefers-color-scheme: light)', color: '#e7ebf3' },

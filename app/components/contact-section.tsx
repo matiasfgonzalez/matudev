@@ -1,19 +1,14 @@
 'use client';
 
-import { Mail, MapPin, Clock, ArrowUpRight } from 'lucide-react';
+import { Mail, ArrowUpRight } from 'lucide-react';
 import { Reveal } from './reveal';
-import {
-  WhatsAppIcon,
-  GitHubIcon,
-  LinkedInIcon,
-  InstagramIcon,
-} from './brand';
+import { WhatsAppIcon, GitHubIcon, LinkedInIcon } from './brand';
 import { links, site } from '../lib/site';
 
+/* Sólo los perfiles profesionales: el código y la trayectoria. */
 const socials = [
   { Icon: GitHubIcon, label: 'GitHub', href: links.github },
   { Icon: LinkedInIcon, label: 'LinkedIn', href: links.linkedin },
-  { Icon: InstagramIcon, label: 'Instagram', href: links.instagram },
 ];
 
 export function ContactSection() {
@@ -57,37 +52,6 @@ export function ContactSection() {
                   sabiendo si tu idea se puede hacer, cuánto cuesta más o menos
                   y cuánto tarda. Si no es para mí, te lo digo en esa llamada.
                 </p>
-
-                <ul className="mt-7 grid sm:grid-cols-2 gap-2.5 list-none p-0">
-                  <li className="well">
-                    <div className="flex items-center gap-2">
-                      <MapPin
-                        size={14}
-                        strokeWidth={1.9}
-                        style={{ color: 'var(--signal-strong)' }}
-                        aria-hidden="true"
-                      />
-                      <span className="well__value" style={{ fontSize: '0.875rem' }}>
-                        {site.location}
-                      </span>
-                    </div>
-                    <p className="well__label">Remoto a todo el país</p>
-                  </li>
-                  <li className="well">
-                    <div className="flex items-center gap-2">
-                      <Clock
-                        size={14}
-                        strokeWidth={1.9}
-                        style={{ color: 'var(--signal-strong)' }}
-                        aria-hidden="true"
-                      />
-                      <span className="well__value" style={{ fontSize: '0.875rem' }}>
-                        {site.timezone}
-                      </span>
-                    </div>
-                    <p className="well__label">Respuesta el mismo día hábil</p>
-                  </li>
-                </ul>
               </div>
 
               <div className="flex flex-col gap-3">
@@ -115,7 +79,7 @@ export function ContactSection() {
 
                 <a
                   href={links.email}
-                  className="glass flex items-center gap-3 mt-2"
+                  className="glass press flex items-center gap-3 mt-2"
                   style={{
                     padding: '1rem 1.15rem',
                     borderRadius: 'var(--r-md)',
@@ -153,11 +117,16 @@ export function ContactSection() {
                         href={s.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="neu grid place-items-center w-full"
-                        style={{ height: '3rem' }}
+                        className="neu press flex items-center justify-center gap-2 w-full"
+                        style={{
+                          height: '3rem',
+                          fontSize: '0.875rem',
+                          fontWeight: 600,
+                        }}
                         aria-label={`${s.label} de Matías González`}
                       >
-                        <s.Icon size={18} />
+                        <s.Icon size={17} />
+                        {s.label}
                       </a>
                     </li>
                   ))}

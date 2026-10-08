@@ -31,7 +31,6 @@ export const links = {
   email: `mailto:${site.email}?subject=${encodeURIComponent('Consulta desde matutech')}`,
   github: 'https://github.com/matiasfgonzalez',
   linkedin: 'https://www.linkedin.com/in/matias-gonzalez-1a75b6223/',
-  instagram: 'https://instagram.com/matute_2gonzalez',
 } as const;
 
 export const nav = [
