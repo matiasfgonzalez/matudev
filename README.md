@@ -3,8 +3,8 @@
 Landing y catálogo de producto de **matutech** — Matías Francisco González,
 desarrollador de producto en Paraná, Entre Ríos.
 
-No es un portfolio de maquetas: la página es un catálogo de doce cosas que
-existen, con lo que resuelve cada una, por qué conviene y con qué está hecha.
+No es un portfolio de maquetas: la página es un catálogo de cosas que existen,
+con lo que resuelve cada una, por qué conviene y con qué está hecha.
 
 ```bash
 npm install

@@ -8,10 +8,16 @@ import { ProductSheet } from './product-sheet';
 import { platformIcon } from './product-icons';
 import {
   products,
+  catalogStats,
   platformLabels,
   type Platform,
   type Product,
 } from '../lib/products';
+
+/* El número sale del catálogo: sumar un producto no deja el título mintiendo. */
+const countTitle =
+  catalogStats.totalWord.charAt(0).toUpperCase() +
+  catalogStats.totalWord.slice(1);
 
 type Filter = Platform | 'todos';
 
@@ -49,7 +55,7 @@ export function ProductsSection() {
         <Reveal>
           <p className="eyebrow">Catálogo</p>
           <h2 className="title-lg mt-5" style={{ maxWidth: '18ch' }}>
-            Doce cosas que existen
+            {countTitle} cosas que existen
             <br />y se pueden usar.
           </h2>
           <p className="lede mt-5">

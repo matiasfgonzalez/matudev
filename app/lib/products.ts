@@ -84,16 +84,18 @@ export const products: Product[] = [
       'Rutinas con series, repeticiones, RPE, superseries y 1RM estimado',
       'Catálogo de 1.323 ejercicios con su animación, buscable por cómo se ve',
       'Alarma de descanso que prende la pantalla sobre el bloqueo',
-      'Salidas a pie y en bici con GPS, mapa y parciales por kilómetro',
+      'Salidas a pie y en bici con GPS, mapa oscuro y parciales por kilómetro',
       'Calculadora de discos: le decís el peso y te dibuja la barra cargada',
       'Récords personales con bitácora y reconstrucción histórica',
       'Imagen 9:16 lista para compartir el entrenamiento en historias',
+      'Guía por pasos que muestra todo lo que se puede hacer',
+      'Se adapta a tablets y plegables',
       'Respaldo y restauración completa en un archivo',
     ],
     specs: [
-      { label: 'Versión', value: '1.5.0' },
+      { label: 'Versión', value: '1.7.1' },
       { label: 'Ejercicios', value: '1.323' },
-      { label: 'Base de datos', value: 'SQLite local' },
+      { label: 'Instalada en', value: 'AR · CL · PE · UY' },
       { label: 'Cuenta', value: 'No requiere' },
     ],
     stack: [
@@ -130,9 +132,9 @@ export const products: Product[] = [
     name: 'Menú Listo',
     kicker: 'Menús digitales por suscripción',
     platform: 'web',
-    status: 'building',
+    status: 'live',
     pitch:
-      'Cada bar arma su carta desde un panel propio, la publica en su URL y recibe los pedidos por WhatsApp.',
+      'Cada local arma su carta desde un panel propio, la publica en su URL y recibe los pedidos armados en su WhatsApp, sin comisiones.',
     problem:
       'Imprimir la carta cada vez que cambia un precio cuesta plata y tiempo. El PDF en el grupo de WhatsApp queda viejo el mismo día.',
     benefits: [
@@ -150,24 +152,25 @@ export const products: Product[] = [
       },
       {
         title: 'Arrancás gratis',
-        body: 'Armar la carta no cuesta nada. La suscripción entra cuando querés que sea pública.',
+        body: 'Armar la carta no cuesta nada. La suscripción entra cuando querés que sea pública, y se cobra sola por Mercado Pago.',
       },
     ],
     features: [
       'Multi-negocio: cada local con su panel, su tema y su URL',
-      'Asistente de alta en 4 pasos, del nombre al primer producto y el QR',
-      'Categorías, fotos, precios, horarios y colores por negocio',
-      'Vista previa privada antes de publicar',
-      'Compuerta de publicación atada a la suscripción',
-      'Pedidos por WhatsApp con el detalle armado',
-      'Panel de super admin con estado de cada local',
+      'Alta por cuenta propia con asistente, del nombre al primer producto y el QR',
+      'Categorías, fotos, adicionales, tamaños, promociones y horarios',
+      'Editor con borrador: los cambios se publican cuando el dueño decide',
+      'Pedidos por WhatsApp con cantidades, aclaraciones y total',
+      'Panel de comandas con estados y métricas del local',
+      'Suscripción con cobro recurrente por Mercado Pago',
+      'Se instala en el celular como app (PWA)',
       'Baja reversible: el local sale de servicio sin perder nada',
     ],
     specs: [
       { label: 'Modelo', value: 'Suscripción mensual' },
+      { label: 'Cobro', value: 'Mercado Pago' },
       { label: 'Arquitectura', value: 'Multi-tenant' },
-      { label: 'Base de datos', value: 'PostgreSQL' },
-      { label: 'Falta', value: 'Cobro automático' },
+      { label: 'Tests', value: '1.891 unitarios' },
     ],
     stack: [
       'Next.js 16',
@@ -176,10 +179,28 @@ export const products: Product[] = [
       'Prisma 7',
       'PostgreSQL',
       'Tailwind v4',
+      'Mercado Pago',
       'Zod',
       'Sentry',
+      'Playwright',
     ],
     accent: 'signal',
+    shot: {
+      src: '/products/menu-listo-1.webp',
+      alt: 'Carta digital de un local de ejemplo en Menú Listo, con buscador y categorías',
+      frame: 'phone',
+    },
+    gallery: [
+      {
+        src: '/products/menu-listo-2.webp',
+        alt: 'Detalle de un producto en Menú Listo con adicionales opcionales',
+      },
+      {
+        src: '/products/menu-listo-3.webp',
+        alt: 'Carrito de Menú Listo con modalidad de entrega y total antes de enviar el pedido',
+      },
+    ],
+    link: { href: 'https://menulisto.com.ar/', label: 'Ver en vivo' },
   },
 
   {
@@ -258,30 +279,107 @@ export const products: Product[] = [
         body: 'Los recordatorios por correo salen solos antes de cada turno.',
       },
       {
+        title: 'Reservan por WhatsApp',
+        body: 'Un asistente con IA consulta, reserva, reprograma y cancela conversando. La IA propone; el servidor valida con las mismas reglas que la web.',
+      },
+      {
         title: 'Imagen de empresa',
         body: 'Una página de reserva propia dice más de tu negocio que un chat lleno de mensajes.',
       },
     ],
     features: [
       'Reserva pública con disponibilidad en vivo',
-      'Servicios con duración y precio configurables',
+      'Servicios con duración, precio y seña por transferencia',
       'Agenda por profesional',
-      'Recordatorios y confirmaciones por correo',
+      'Recordatorios y confirmaciones por correo y notificación push',
+      'Lista de espera que avisa cuando se libera un turno',
+      'Asistente de WhatsApp con IA para reservar conversando',
+      'Buscador de negocios por rubro y ubicación, con mapa',
       'Panel con estados de turno y métricas',
     ],
     specs: [
       { label: 'Estado', value: 'En producción' },
-      { label: 'Correo', value: 'Resend' },
+      { label: 'Prueba', value: '30 días gratis' },
+      { label: 'Tests', value: '245 unitarios' },
       { label: 'Base de datos', value: 'PostgreSQL' },
     ],
-    stack: ['Next.js', 'Node.js', 'Prisma', 'PostgreSQL', 'Resend', 'Vercel'],
+    stack: [
+      'Next.js 15',
+      'TypeScript',
+      'Prisma',
+      'PostgreSQL',
+      'Clerk',
+      'WhatsApp Cloud API',
+      'Web Push',
+      'Resend',
+      'Vercel',
+    ],
     accent: 'violet',
     shot: {
       src: '/products/turnospro.png',
-      alt: 'Panel de TurnosPro con la agenda de turnos',
+      alt: 'Portada de TurnosPro con la reserva de un turno elegido por día y horario',
       frame: 'browser',
     },
     link: { href: 'https://www.buscatusturnos.com.ar/', label: 'Ver en vivo' },
+  },
+
+  {
+    id: 'tropero',
+    name: 'Tropero',
+    kicker: 'Gestión ganadera con RFID',
+    platform: 'movil',
+    status: 'beta',
+    pitch:
+      'Leés la caravana electrónica en la manga y tenés la historia del animal en la mano: sanidad, partos y pesadas, aunque no haya señal.',
+    problem:
+      'En la manga no hay señal. Lo que se anota en la libreta se pasa a la planilla días después, y la historia de cada animal termina repartida entre papeles.',
+    benefits: [
+      {
+        title: 'Trabaja sin señal',
+        body: 'Todo queda en el celular y se sincroniza solo cuando vuelve la conexión. Si dos celulares cargaron lo mismo, el sistema fusiona y avisa.',
+      },
+      {
+        title: 'Un toque por animal',
+        body: 'Modo manga: se lee la caravana, se abre la ficha y se pesa o vacuna en un toque, con deshacer.',
+      },
+      {
+        title: 'Las planillas salen solas',
+        body: 'Excel, CSV y PDF desde el celular o el panel web, sin pasar nada a mano.',
+      },
+      {
+        title: 'Cada campo, en su base',
+        body: 'Cada cliente tiene su propia base de datos, sus usuarios y sus permisos. Nadie ve el rodeo de otro.',
+      },
+    ],
+    features: [
+      'Identificación por caravana electrónica (RFID) y visual',
+      'Lector RFID por Bluetooth en modo teclado',
+      '18 tipos de eventos: sanidad, producción, reproducción, manejo y bajas',
+      'Genealogía, partos, crías y mellizos',
+      'Detecta caravanas duplicadas, incluso entre celulares sin señal',
+      'Panel web con tablero, fichas y alta de usuarios',
+      'Vinculación de celulares por QR y revocación de dispositivos',
+      'Validación de RENSPA, CUIT y caravanas',
+      'Actualizaciones de la app sin reinstalar',
+    ],
+    specs: [
+      { label: 'Datos', value: 'Offline-first' },
+      { label: 'Eventos', value: '18 tipos' },
+      { label: 'Arquitectura', value: 'Una base por cliente' },
+      { label: 'Planillas', value: 'Excel · CSV · PDF' },
+    ],
+    stack: [
+      'React Native',
+      'Expo SDK 58',
+      'TypeScript',
+      'expo-sqlite',
+      'Hono',
+      'Drizzle',
+      'PostgreSQL',
+      'Next.js 16',
+      'Railway',
+    ],
+    accent: 'signal',
   },
 
   {
@@ -386,41 +484,42 @@ export const products: Product[] = [
     platform: 'movil',
     status: 'beta',
     pitch:
-      'Escaneás el código de barras y la app sabe qué producto es, cuánto te queda y dónde conviene comprarlo.',
+      'Escaneás el código de barras o la foto del ticket, y la app sabe qué compraste, cuánto te queda y dónde conviene comprarlo.',
     problem:
       'Comprás la tercera botella de aceite porque no te acordabas de que había dos en el fondo de la alacena.',
     benefits: [
       {
         title: 'La lista se arma sola',
-        body: 'Lo que baja del mínimo pasa directo a la lista de compras.',
+        body: 'Lo que baja del mínimo, y lo que se acaba esta semana según lo que venís consumiendo, pasa directo a la lista.',
+      },
+      {
+        title: 'El ticket se carga solo',
+        body: 'Sacás una foto y la IA lee negocio, productos, pesables y descuentos. Vos revisás y guardás; la app aprende a reconocer cada producto.',
       },
       {
         title: 'Sabés dónde está más barato',
-        body: 'Cada producto guarda precio por negocio, así el total estimado es real.',
+        body: 'Compara el total de la lista en cada negocio y arma la combinación más barata en un toque.',
       },
       {
-        title: 'Anda sin internet',
-        body: 'Todo vive en SQLite dentro del teléfono. La góndola del súper no tiene señal y no importa.',
-      },
-      {
-        title: 'Sin suscripción',
-        body: 'El producto es gratuito entero. No hay funciones detrás de un muro.',
+        title: 'Anda sin internet y es gratis',
+        body: 'Todo vive en SQLite dentro del teléfono. No hay suscripción ni funciones detrás de un muro.',
       },
     ],
     features: [
-      'Stock con cantidad actual y mínimo por producto',
+      'Stock con mínimo por producto y pronóstico de cuántos días te quedan',
       'Escaneo de código de barras con autocompletado vía Open Food Facts',
-      'Lista de compras manual o generada desde el stock bajo',
-      'Precios por negocio y total estimado del carrito',
-      'Gastos mensuales con filtro por año y mes',
-      'Viajes con presupuesto, gasto por categoría y promedio diario',
+      'Lectura de tickets con IA, revisión antes de guardar y vínculo con el inventario',
+      'Diez proveedores de IA a elección, incluido Ollama local, gratis y sin límites',
+      'Lista de compras con deshacer y comparación de negocios',
+      'Historial de precios por negocio y análisis del gasto por período',
+      'Presupuesto mensual, gastos y viajes con gasto por categoría',
       'Modo claro y oscuro persistente',
     ],
     specs: [
-      { label: 'Plataforma', value: 'Android' },
+      { label: 'Versión', value: '1.4.0' },
       { label: 'Datos', value: 'Offline-first' },
+      { label: 'Tickets', value: '10 proveedores de IA' },
       { label: 'Precio', value: 'Gratis' },
-      { label: 'Catálogo', value: 'Open Food Facts' },
     ],
     stack: [
       'React Native',
@@ -428,8 +527,63 @@ export const products: Product[] = [
       'TypeScript',
       'Zustand',
       'expo-sqlite',
+      'Claude API',
     ],
     accent: 'cyan',
+  },
+
+  {
+    id: 'qr-scanner',
+    name: 'QR Scanner Pro',
+    kicker: 'Escáner que revisa antes de abrir',
+    platform: 'movil',
+    status: 'building',
+    pitch:
+      'Escanea cualquier código y te dice si es seguro antes de abrirlo: enlaces que imitan a otro sitio, redes Wi-Fi abiertas y pagos irreversibles.',
+    problem:
+      'Un QR pegado encima de otro en la mesa de un bar te lleva a una página que imita a tu banco. La cámara del teléfono lo abre sin preguntar.',
+    benefits: [
+      {
+        title: 'Te avisa antes, no después',
+        body: 'Cada código recibe un veredicto (Seguro, Precaución o Peligroso) con el detalle de cada chequeo.',
+      },
+      {
+        title: 'Detecta las imitaciones',
+        body: 'Dominios que se hacen pasar por otro, letras de otro alfabeto que parecen iguales y marcas usadas fuera de su sitio.',
+      },
+      {
+        title: 'Hace lo que corresponde',
+        body: 'Abre el enlace, copia la clave del Wi-Fi, llama, agenda el evento o busca el producto, según lo que diga el código.',
+      },
+      {
+        title: 'Sabés dónde lo escaneaste',
+        body: 'Cada escaneo queda en un mapa, con historial, favoritos y exportación a CSV.',
+      },
+    ],
+    features: [
+      '13 formatos: QR, Data Matrix, PDF417, Aztec, EAN, UPC, Code 128 y más',
+      'Escaneo desde la cámara o desde una imagen de la galería',
+      'Análisis de enlaces: HTTPS, credenciales embebidas, IP, punycode y acortadores',
+      'Bloqueo de esquemas peligrosos como javascript: y data:',
+      '"Ver destino real": sigue las redirecciones antes de abrir',
+      'Generador de QR para enlaces, Wi-Fi, contactos, email y teléfono',
+      'Mapa de escaneos sin API key',
+      'Modo claro y oscuro, respetando "Reducir movimiento"',
+    ],
+    specs: [
+      { label: 'Formatos', value: '13' },
+      { label: 'Veredicto', value: '3 niveles' },
+      { label: 'Plataformas', value: 'Android · iOS' },
+      { label: 'Analizador', value: 'Propio' },
+    ],
+    stack: [
+      'React Native',
+      'Expo SDK 54',
+      'TypeScript',
+      'Reanimated',
+      'Leaflet',
+    ],
+    accent: 'magenta',
   },
 
   {
@@ -672,9 +826,17 @@ export const products: Product[] = [
   },
 ];
 
+const numberWords = [
+  'cero', 'uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho',
+  'nueve', 'diez', 'once', 'doce', 'trece', 'catorce', 'quince', 'dieciséis',
+  'diecisiete', 'dieciocho', 'diecinueve', 'veinte',
+];
+
 /** Contadores reales del catálogo, para la franja de prueba social. */
 export const catalogStats = {
   total: products.length,
+  /** El total en letras ("catorce"), para los textos que lo nombran. */
+  totalWord: numberWords[products.length] ?? String(products.length),
   live: products.filter((p) => p.status === 'live' || p.status === 'store')
     .length,
   platforms: new Set(products.map((p) => p.platform)).size,

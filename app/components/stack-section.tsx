@@ -1,7 +1,7 @@
 'use client';
 
 import { Reveal, RevealGroup, RevealItem } from './reveal';
-import { products } from '../lib/products';
+import { products, catalogStats } from '../lib/products';
 
 /**
  * El stack, agrupado por para qué sirve cada cosa. La cuenta de proyectos sale
@@ -25,7 +25,7 @@ const groups = [
     tone: 'var(--au-cyan)',
     items: [
       'React Native',
-      'Expo SDK 57',
+      'Expo SDK 58',
       'Expo Router',
       'Zustand',
       'SQLite',
@@ -33,30 +33,48 @@ const groups = [
     ],
   },
   {
-    label: 'Datos',
+    label: 'Datos y APIs',
     tone: 'var(--au-violet)',
-    items: ['PostgreSQL', 'Prisma 7', 'Neon', 'SQLite', 'Zod'],
+    items: ['PostgreSQL', 'Prisma 7', 'Drizzle', 'Neon', 'Hono', 'Zod'],
   },
   {
-    label: 'Identidad y correo',
+    label: 'Identidad, cobros y correo',
     tone: 'var(--au-magenta)',
-    items: ['Clerk', 'Resend', 'UploadThing', 'JWT', 'API Keys'],
+    items: ['Clerk', 'Mercado Pago', 'Resend', 'UploadThing', 'JWT', 'Web Push'],
   },
   {
-    label: 'Escritorio y visión',
+    label: 'Escritorio, visión e IA',
     tone: 'var(--signal-strong)',
-    items: ['Electron', 'Python 3.12', 'ONNX Runtime', 'OpenCV', 'PyAV'],
+    items: [
+      'Electron',
+      'Python 3.12',
+      'ONNX Runtime',
+      'OpenCV',
+      'Claude API',
+      'WhatsApp Cloud API',
+    ],
   },
   {
     label: 'Operación',
     tone: 'var(--au-jade)',
-    items: ['Vercel', 'Cloudflare Pages', 'Docker', 'Sentry', 'Vitest', 'Git'],
+    items: [
+      'Vercel',
+      'Railway',
+      'Cloudflare Pages',
+      'Docker',
+      'Sentry',
+      'Vitest',
+      'Playwright',
+    ],
   },
 ];
 
+/* Prefijo completo: "Next.js" cuenta "Next.js 16", pero "React Native" no
+   cuenta "React 19" ni "React Server Components". */
 function countUses(tech: string) {
+  const needle = tech.toLowerCase();
   return products.filter((p) =>
-    p.stack.some((s) => s.toLowerCase().startsWith(tech.toLowerCase().slice(0, 6)))
+    p.stack.some((s) => s.toLowerCase().startsWith(needle))
   ).length;
 }
 
@@ -72,8 +90,8 @@ export function StackSection() {
           </h2>
           <p className="lede mt-5">
             Cada una entró a la caja porque resolvió algo en un proyecto real.
-            No hay tecnologías acá que no estén corriendo en alguno de los doce
-            productos del catálogo.
+            No hay tecnologías acá que no estén corriendo en alguno de los{' '}
+            {catalogStats.totalWord} productos del catálogo.
           </p>
         </Reveal>
 
